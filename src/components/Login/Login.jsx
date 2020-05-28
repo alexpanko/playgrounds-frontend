@@ -59,7 +59,7 @@ export default class Login extends Component {
                         <hr />
                         <span className="bg-white text-secondary font-italic px-2">or...</span>
                     </div>
-                    <form className="mt-5 d-flex flex-column align-items-center" onSubmit={(e) => this.handleSubmit(e)}>
+                    <form className="mt-5 d-flex flex-column align-items-center" onSubmit={this.handleFormSubmit}>
                         <div className="form-group">
                             <label htmlFor="username">Email address:</label>
                             <input 
@@ -68,7 +68,7 @@ export default class Login extends Component {
                                 name="username" 
                                 value={this.state.username} 
                                 placeholder="Enter email"
-                                onChange={(e) => this.handleInput(e)}
+                                onChange={ e => this.handleChange(e)}
                             />
                         </div>
                         <div className="form-group">
@@ -79,7 +79,7 @@ export default class Login extends Component {
                                 name="password" 
                                 placeholder="Password"
                                 value={this.state.password}
-                                onChange={(e) => this.handleInput(e)}
+                                onChange={ e => this.handleChange(e)}
                             />
                         </div>
                         <button type="submit" className="btn btn-secondary width-300">Login</button>

@@ -5,11 +5,11 @@ import { Route, Link, Switch } from 'react-router-dom'
 export default function Home() {
     return (
         <div className="container-fluid">
-            <video playsInLine autoPlay muted loop id="myVideo">
+            <video playsInline autoPlay muted loop id="myVideo">
                 {/* <source src="/images/playgrounds.webm" type="video/webm" /> */}
                 <source src="/images/playgrounds.mp4" type="video/mp4" />
             </video>
-            <header class="viewport-header">
+            <header className="viewport-header">
                 <div className="row">
                     <div className="col">
                         <div className="highlight-skew">
@@ -19,7 +19,7 @@ export default function Home() {
                         </div>
                         <div>
                             <h1 className="text-brown">
-                                <span class="highlight">Find playground near you</span>
+                                <span className="highlight">Find playground near you</span>
                             </h1>
                         </div>
                         <div>
