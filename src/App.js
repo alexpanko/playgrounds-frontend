@@ -6,11 +6,34 @@ import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import AddPG from './components/AddPG/AddPG';
 import MainMap from './components/MainMap/MainMap';
+import Admin from './components/Admin/Admin'
+import AuthService from './services/auth-service'
 
 export default class App extends Component {
 
   state = {
-    user: false
+    user: null,
+    loading: true
+  }
+
+  service = new AuthService()
+
+  checkAuthenticated = () => {
+    if(this.state.user === null) {
+      this.service.isAuthenticated()
+      .then(response => {
+        this.setState({
+        user: response,
+        loading: false
+      })
+      })
+      .catch( err => {
+        this.setState({
+          user: false,
+          loading: false
+        })
+      })
+    }
   }
 
   setUser = (user) => {
@@ -18,6 +41,18 @@ export default class App extends Component {
   }
 
   render() {
+    this.checkAuthenticated()
+    // if(this.state.loading) {
+    //   return <p>loading</p>
+    // }
+
+    // if(this.state.user) {
+    //   return (
+    //     <div>
+    //       <h1>Welcome {this.state.user.username}</h1>
+    //     </div>
+    //   )
+    // }
 
     return (
       <div>
@@ -28,6 +63,8 @@ export default class App extends Component {
           <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />  
           <Route exact path='/addPG' component={AddPG} />  
           <Route exact path='/main-map' component={MainMap} />     
+          <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />
+          <Route exact path='/admin' render={() => <Admin user={this.state.user} setUser={this.setUser} />} />           
         </Switch>
       </div>
     )
