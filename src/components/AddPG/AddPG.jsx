@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import UserService from '../../services/user-service';
-//import AddPhoto from '../AddPhoto/AddPhoto'
 const service = new UserService()
 
 export default function ShowPG(props) {
