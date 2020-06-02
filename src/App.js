@@ -5,11 +5,34 @@ import { Route, Link, Switch } from 'react-router-dom'
 import Home from './components/Home/Home'
 import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
+import Admin from './components/Admin/Admin'
+import AuthService from './services/auth-service'
 
 export default class App extends Component {
 
   state = {
-    user: false
+    user: null,
+    loading: true
+  }
+
+  service = new AuthService()
+
+  checkAuthenticated = () => {
+    if(this.state.user === null) {
+      this.service.isAuthenticated()
+      .then(response => {
+        this.setState({
+        user: response,
+        loading: false
+      })
+      })
+      .catch( err => {
+        this.setState({
+          user: false,
+          loading: false
+        })
+      })
+    }
   }
 
   setUser = (user) => {
@@ -17,17 +40,26 @@ export default class App extends Component {
   }
 
   render() {
+    this.checkAuthenticated()
+    // if(this.state.loading) {
+    //   return <p>loading</p>
+    // }
 
-    if(this.state.user) {
-      return <h1>Welcome {this.state.user.username}</h1>
-    }
+    // if(this.state.user) {
+    //   return (
+    //     <div>
+    //       <h1>Welcome {this.state.user.username}</h1>
+    //     </div>
+    //   )
+    // }
 
     return (
       <div>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
-          <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />           
+          <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />
+          <Route exact path='/admin' render={() => <Admin user={this.state.user} setUser={this.setUser} />} />           
         </Switch>
       </div>
     )
