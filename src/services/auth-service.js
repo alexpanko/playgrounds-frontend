@@ -18,6 +18,17 @@ class AuthService {
         return this.service.post('/auth/login', {username, password})
         .then(response => response.data)
     }
+
+    logout = () => {
+        return this.service.get('/auth/logout', {})
+        .then(response => response.data)
+    }
+
+    isAuthenticated = () => {
+        return this.service.get('/auth/isLoggedIn')
+        .then(response => response.data)
+    }
+
 }
 
 export default AuthService
