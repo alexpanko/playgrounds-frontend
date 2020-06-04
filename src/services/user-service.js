@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { toast } from 'react-toastify';
+
+
 
 class UserService {
   constructor() {
@@ -9,11 +12,21 @@ class UserService {
     //this.service = service
   }
 
- addPG = (data) => {
-    return this.service.post('/playground/addPG', data)
+ addPG = (data, setLoaded) => {
+    return this.service.post('/playground/addPG',  data, {
+      onUploadProgress:ProgressEvent => {
+     setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)}
+      })
     .then(response => response.data)
-    .catch(err => console.log(err))
-    }
+    .then(res => { 
+      console.log("11111")
+      toast.success('upload success')
+  })
+    .catch(err => { 
+      toast.error('upload fail')
+  })
+    
+  }
  
 
 }
