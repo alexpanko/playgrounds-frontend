@@ -7,7 +7,8 @@ import axios from 'axios'
 export default class Admin extends Component {
 
     state={
-        playgrounds:[]
+        playgrounds:[],
+        playgroundsFilter:[]
     }
 
     service = new AuthService()
@@ -25,7 +26,16 @@ export default class Admin extends Component {
         .then(() => {
             this.props.setUser({})
         })
-      }
+    }
+
+    filterAllPlaygrounds(e) {
+        e.preventDefault();
+        const playgroundsClone = [...this.state.playgrounds]
+        this.setState({playgroundsFilter:playgroundsClone})
+        console.log("123");
+        console.log(playgroundsClone);
+        // this.setState({playgrounds:this.state.playgrounds.approved.filter(approved => approved === true)})
+    }
 
     render() {
 
@@ -55,7 +65,7 @@ export default class Admin extends Component {
                                         Filter playgrounds
                                     </button>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button className="dropdown-item" type="button">All</button>
+                                        <button className="dropdown-item" type="button" onClick={this.filterAllPlaygrounds}>All</button>
                                         <button className="dropdown-item" type="button">New</button>
                                         <button className="dropdown-item" type="button">Approved</button>
                                     </div>
@@ -63,13 +73,20 @@ export default class Admin extends Component {
                             </div>
                             
 
-                            <div>
+                            <div className="card-columns my-5">
                                 {!this.state.playgrounds ? 'Playgrounds are loading' : 
                                 this.state.playgrounds.map((pg, index) => (
-                                    <div key={index}>
-                                    <Link className="link-none" to={"/" + pg._id}>
-                                        {/* <img className="width-50" src={pg.photo} alt="" /> */}
-                                        <h2>{pg.address}</h2>
+                                    <div className="card" key={index}>
+                                    <Link className="link-none text-body text-decoration-none" to={"/" + pg._id}>
+                                        <img src={pg.photo[0]} className="card-img-top" alt="..." />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{pg.address}</h5>
+                                            <p className="card-text d-flex justify-content-between font-weight-bold">
+                                                {pg.attributes.slide && <strong>Slide</strong>}
+                                                {pg.attributes.swing && <strong>Swing</strong>}
+                                                {pg.attributes.rollerBungge && <strong>Roller Bungge</strong>}
+                                            </p>
+                                        </div>
                                     </Link>
                                     </div>
                                 ))
