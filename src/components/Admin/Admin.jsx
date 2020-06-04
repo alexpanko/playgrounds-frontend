@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../../services/auth-service'
 import './Admin.css';
+import axios from 'axios'
 
 export default class Admin extends Component {
 
-    // state = {
-    //     user: this.props.user & ,
-    //     // service: new AuthService()
-    // }
+    state={
+        playgrounds:[]
+    }
 
     service = new AuthService()
+
+    componentDidMount(){
+        axios.get('http://localhost:4000/playground/admin')
+        .then(result => {
+            this.setState({playgrounds:result.data.PG})
+        })
+        .catch((error) => console.log(error));
+    }
 
     logoutUser = () =>{
         this.service.logout()
@@ -21,7 +29,7 @@ export default class Admin extends Component {
 
     render() {
 
-        // console.log(this.state)
+        console.log(this.state.playgrounds)
         if (this.props.user && this.props.user.role === "ADMIN") {
             return (
                 <div className="container">
@@ -53,6 +61,23 @@ export default class Admin extends Component {
                                     </div>
                                 </div>
                             </div>
+                            
+
+                            <div>
+                                {!this.state.playgrounds ? 'Playgrounds are loading' : 
+                                this.state.playgrounds.map((pg, index) => (
+                                    <div key={index}>
+                                    <Link className="link-none" to={"/" + pg._id}>
+                                        {/* <img className="width-50" src={pg.photo} alt="" /> */}
+                                        <h2>{pg.address}</h2>
+                                    </Link>
+                                    </div>
+                                ))
+                                }
+                            </div>
+
+                            
+
                         </div>
                         <div className="col-lg-2"></div>
                     </div>
