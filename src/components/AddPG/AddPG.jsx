@@ -1,9 +1,11 @@
+
 import React, { useState } from "react";
 import UserService from "../../services/user-service";
 import { maxSelectPhoto, checkPhotoSize } from "./handlePhotoUpload";
 import { Progress } from "reactstrap";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 const service = new UserService();
 
