@@ -28,13 +28,13 @@ export default class Admin extends Component {
         })
     }
 
-    filterAllPlaygrounds(e) {
+    filterPlaygrounds(e, filter) {
         e.preventDefault();
-        const playgroundsClone = [...this.state.playgrounds]
-        this.setState({playgroundsFilter:playgroundsClone})
-        console.log("123");
-        console.log(playgroundsClone);
-        // this.setState({playgrounds:this.state.playgrounds.approved.filter(approved => approved === true)})
+        axios.get(`http://localhost:4000/playground/admin/filter?filterApproved=${filter}`)
+        .then(result => {
+            this.setState({playgrounds:result.data.PG})
+        })
+        .catch((error) => console.log(error));
     }
 
     render() {
@@ -65,9 +65,9 @@ export default class Admin extends Component {
                                         Filter playgrounds
                                     </button>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button className="dropdown-item" type="button" onClick={this.filterAllPlaygrounds}>All</button>
-                                        <button className="dropdown-item" type="button">New</button>
-                                        <button className="dropdown-item" type="button">Approved</button>
+                                        <button className="dropdown-item" type="button" onClick={(e) => {this.filterPlaygrounds(e, "all")}}>All</button>
+                                        <button className="dropdown-item" type="button" onClick={(e) => {this.filterPlaygrounds(e, false)}}>New</button>
+                                        <button className="dropdown-item" type="button" onClick={(e) => {this.filterPlaygrounds(e, true)}}>Approved</button>
                                     </div>
                                 </div>
                             </div>
