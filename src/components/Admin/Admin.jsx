@@ -40,7 +40,8 @@ export default class Admin extends Component {
     render() {
 
         console.log(this.state.playgrounds)
-        if (this.props.user && this.props.user.role === "ADMIN") {
+        // if (this.props.user && this.props.user.role === "ADMIN") {
+        if (this.props.user) {
             return (
                 <div className="container">
                     <div className="row">

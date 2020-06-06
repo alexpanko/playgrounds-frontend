@@ -27,6 +27,12 @@ class UserService {
   })
     
   }
+
+  renderPG = (data) => {
+    return this.service.get('/playground/approvedPlaygrounds', data)
+    .then(res => res.data)
+    .catch(err => console.log(err))
+  }
  
 
 }
