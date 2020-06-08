@@ -1,17 +1,16 @@
-
 import React, { useState } from "react";
 import UserService from "../../services/user-service";
 import { maxSelectPhoto, checkPhotoSize } from "./handlePhotoUpload";
 import { Progress } from "reactstrap";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const service = new UserService();
 
 export default function ShowPG(props) {
   const [photo, setPhoto] = useState();
   const [address, setAddress] = useState("");
+
   const [slide, setSlide] = useState(false);
   const [swing, setSwing] = useState(false);
   const [rollerBungge, setRollerBungge] = useState(false);
@@ -30,15 +29,13 @@ export default function ShowPG(props) {
     formData.append("rollerBungge", rollerBungge);
 
     let result = await service.addPG(formData, setLoaded);
-    setTimeout( () => {
+    setTimeout(() => {
       props.history.push("/main-map");
-    }, 2000)
-    
+    }, 2000);
   };
 
   const handleFileUpload = (e) => {
     if (maxSelectPhoto(e) && checkPhotoSize(e)) {
-      // && checkPhotoSize(e)
       setPhoto(e.target.files);
       //console.log('files', e.target.files);
     }
@@ -47,36 +44,71 @@ export default function ShowPG(props) {
   return (
     <>
       <div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <input
-            type="file"
-            name="photo"
-            multiple
-            onChange={(e) => handleFileUpload(e)}
-          />
-          <div className="form-group">
-            <Progress max="100" color="success" value={loaded}>
-              {Math.round(loaded, 2)}%
-            </Progress>
-          </div>
-          <input
-            type="text"
-            name=""
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <input type="checkbox" name="" onChange={(e) => setSlide(!slide)} />
-          <input type="checkbox" name="" onChange={(e) => setSwing(!swing)} />
-          <input
-            type="checkbox"
-            name=""
-            onChange={(e) => setRollerBungge(!rollerBungge)}
-          />
+        <div>
+          <h1 className="text-brown text-center">
+            <span className="highlight">Add a new playground</span>
+          </h1>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <input
+              type="file"
+              name="photo"
+              multiple
+              onChange={(e) => handleFileUpload(e)}
+            />
+            <div className="form-group">
+              <Progress max="100" color="success" value={loaded}>
+                {Math.round(loaded, 2)}%
+              </Progress>
+            </div>
+            <label>
+              {" "}
+              Addres
+              <input
+                type="text"
+                name=""
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </label>
 
-          <button type="submit" />
-        </form>
-      </div>
-      <div className="form-group">
-        <ToastContainer />
+            <label>
+              slide
+              <input
+                type="checkbox"
+                checked={slide}
+                name=""
+                onChange={(e) => setSlide(!slide)}
+              />
+            </label>
+
+            <label>
+              swing
+              <input
+                type="checkbox"
+                checked={swing}
+                name=""
+                onChange={(e) => setSwing(!swing)}
+              />
+            </label>
+
+            <label>
+              Roller Bungge
+              <input
+                type="checkbox"
+                checked={rollerBungge}
+                name=""
+                onChange={(e) => setRollerBungge(!rollerBungge)}
+              />
+            </label>
+
+            <button className="btn btn-warning" type="submit">
+              {" "}
+              Add playground{" "}
+            </button>
+          </form>
+        </div>
+        <div className="form-group">
+          <ToastContainer />
+        </div>
       </div>
     </>
   );

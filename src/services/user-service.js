@@ -33,7 +33,18 @@ class UserService {
     .then(res => res.data)
     .catch(err => console.log(err))
   }
- 
+
+  getEditPG = (id) => {
+    return this.service.get(`/playground/admin/edit/${id}`)
+    .then(res => res.data)
+    .catch(err => console.log(err))
+  }
+  
+  editPG = (data, id) => {
+    return this.service.post(`/playground/admin/edit/${id}`, data)
+    .then(res => res.data)
+    .catch(err => console.log(err))
+  }
 
 }
 
