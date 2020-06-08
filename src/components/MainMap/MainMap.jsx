@@ -28,13 +28,13 @@ const service = new UserService();
 
 export default function MainMap() {
 
-    useEffect(() => {
-        // axios.get('http://localhost:4000/playground/approvedPlaygrounds')
-        // .then(result => {
-        //     this.setState({playgrounds:result.data.PG})
-        // })
-        // .catch((error) => console.log(error));
-      });
+    // useEffect(() => {
+    //     // axios.get('http://localhost:4000/playground/approvedPlaygrounds')
+    //     // .then(result => {
+    //     //     this.setState({playgrounds:result.data.PG})
+    //     // })
+    //     // .catch((error) => console.log(error));
+    //   });
 
     const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,

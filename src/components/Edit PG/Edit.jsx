@@ -11,17 +11,21 @@ export default function Edit({id}) {
     const [lng, setLng] = useState(0)
     const [slide, setSlide] = useState(false);
     const [swing, setSwing] = useState(false);
-    const [rollerBungge, setRollerBungge] = useState(false);
+    const [rollerBungge, setRollerBungge] = useState(false);  const [toilet, setToilet] = useState(false);
+    const [sander, setSander] = useState(false);
 
     useEffect(() => {
         service.getEditPG(id)
         .then(data => {
             setAddress(data.address);
-            setLat(data.lat)
-            setLng(data.lng)
-            setSlide(data.slide);
-            setSwing(data.swing);
-            setRollerBungge(data.rollerBungge);
+            setLat(data.coordinates.lat)
+            setLng(data.coordinates.lng)
+            setSlide(data.attributes.slide);
+            setSwing(data.attributes.swing);
+            setRollerBungge(data.attributes.rollerBungge);
+            setSander(data.attributes.sander);
+            setToilet(data.attributes.toilet)
+
             console.log({data})
         })
     }, [id])
@@ -37,12 +41,9 @@ export default function Edit({id}) {
         formData.append("rollerBungge", rollerBungge); */
     
         let result = await service.editPG({
-            lat,
-            lng,
+            coordinates:{lat, lng},
             address,
-            slide,
-            swing,
-            rollerBungge
+            attributes:{swing,slide,rollerBungge,sander,toilet}
         }, id)
         
       };
@@ -54,6 +55,7 @@ export default function Edit({id}) {
            <label> Lattitude
           <input
             type="text"
+            value={lat}
             name=""
             onChange={(e) => setLat(e.target.value)}
           />
@@ -61,6 +63,7 @@ export default function Edit({id}) {
           <label> Longitude
           <input
             type="text"
+            value={lng}
             name=""
             onChange={(e) => setLng(e.target.value)}
           />
@@ -82,6 +85,26 @@ export default function Edit({id}) {
           <label>swing
           <input type="checkbox" checked={swing}name="" onChange={(e) => setSwing(!swing)} />
           </label>
+
+          <label>
+              Sander
+              <input
+                type="checkbox"
+                checked={sander}
+                name=""
+                onChange={(e) => setSander(!sander)}
+              />
+            </label>
+
+            <label>
+              Toilet
+              <input
+                type="checkbox"
+                checked={toilet}
+                name=""
+                onChange={(e) => setToilet(!toilet)}
+              />
+            </label>
 
           <label>Roller Bungge
 

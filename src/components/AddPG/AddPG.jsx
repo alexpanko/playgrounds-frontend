@@ -14,6 +14,8 @@ export default function ShowPG(props) {
   const [slide, setSlide] = useState(false);
   const [swing, setSwing] = useState(false);
   const [rollerBungge, setRollerBungge] = useState(false);
+  const [toilet, setToilet] = useState(false);
+  const [sander, setSander] = useState(false);
   const [loaded, setLoaded] = useState(0);
 
   const handleSubmit = async (e) => {
@@ -24,9 +26,13 @@ export default function ShowPG(props) {
       formData.append("photo", element);
     });
     formData.append("address", address);
-    formData.append("slide", slide);
-    formData.append("swing", swing);
-    formData.append("rollerBungge", rollerBungge);
+    formData.append("attributes", {
+      slide,
+      swing,
+      rollerBungge,
+      sander,
+      toilet,
+    });
 
     let result = await service.addPG(formData, setLoaded);
     setTimeout(() => {
@@ -71,7 +77,7 @@ export default function ShowPG(props) {
             </label>
 
             <label>
-              slide
+              Slide
               <input
                 type="checkbox"
                 checked={slide}
@@ -81,7 +87,7 @@ export default function ShowPG(props) {
             </label>
 
             <label>
-              swing
+              Swing
               <input
                 type="checkbox"
                 checked={swing}
@@ -97,6 +103,26 @@ export default function ShowPG(props) {
                 checked={rollerBungge}
                 name=""
                 onChange={(e) => setRollerBungge(!rollerBungge)}
+              />
+            </label>
+            
+            <label>
+              Sander
+              <input
+                type="checkbox"
+                checked={sander}
+                name=""
+                onChange={(e) => setSander(!sander)}
+              />
+            </label>
+
+            <label>
+              Toilet
+              <input
+                type="checkbox"
+                checked={toilet}
+                name=""
+                onChange={(e) => setToilet(!toilet)}
               />
             </label>
 
