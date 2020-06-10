@@ -32,14 +32,6 @@ export default function Edit({id}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        /* const formData = new FormData();
-        formData.append("lat",lat);
-        formData.append("lng",lng);
-        formData.append("address", address);
-        formData.append("slide", slide);
-        formData.append("swing", swing);
-        formData.append("rollerBungge", rollerBungge); */
-    
         let result = await service.editPG({
             coordinates:{lat, lng},
             address,

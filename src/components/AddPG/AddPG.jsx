@@ -4,6 +4,7 @@ import { maxSelectPhoto, checkPhotoSize } from "./handlePhotoUpload";
 import { Progress } from "reactstrap";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./AddPG.scss"
 
 const service = new UserService();
 
@@ -49,23 +50,25 @@ export default function ShowPG(props) {
 
   return (
     <>
-      <div>
+     <div className="progress-bar">
+              <Progress max="100" color="success" value={loaded}>
+                {Math.round(loaded, 2)}%
+              </Progress>
+            </div>
+      <div className="adding-form">
+      
         <div>
           <h1 className="text-brown text-center">
             <span className="highlight">Add a new playground</span>
           </h1>
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form className="from-container" onSubmit={(e) => handleSubmit(e)}>
             <input
               type="file"
               name="photo"
               multiple
               onChange={(e) => handleFileUpload(e)}
             />
-            <div className="form-group">
-              <Progress max="100" color="success" value={loaded}>
-                {Math.round(loaded, 2)}%
-              </Progress>
-            </div>
+           
             <label>
               {" "}
               Addres
@@ -76,55 +79,109 @@ export default function ShowPG(props) {
               />
             </label>
 
-            <label>
-              Slide
-              <input
-                type="checkbox"
-                checked={slide}
-                name=""
-                onChange={(e) => setSlide(!slide)}
-              />
-            </label>
+            <ul>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    onChange={(e) => setToilet(!toilet)}
+                  />
+                  <div className="icon-box">
+                    <img
+                      className="icon"
+                      src="/images/icons/wc.svg"
+                      alt="WC"
+                    />
+                  </div>
+                </label>
+              </li>
 
-            <label>
-              Swing
-              <input
-                type="checkbox"
-                checked={swing}
-                name=""
-                onChange={(e) => setSwing(!swing)}
-              />
-            </label>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    onChange={(e) => setSlide(!slide)}
+                  />
+                  <div className="icon-box">
+                    <img
+                      className="icon"
+                      src="/images/icons/slide.svg"
+                      alt="slide"
+                    />
+                  </div>
+                </label>
+              </li>
 
-            <label>
-              Roller Bungge
-              <input
-                type="checkbox"
-                checked={rollerBungge}
-                name=""
-                onChange={(e) => setRollerBungge(!rollerBungge)}
-              />
-            </label>
-            
-            <label>
-              Sander
-              <input
-                type="checkbox"
-                checked={sander}
-                name=""
-                onChange={(e) => setSander(!sander)}
-              />
-            </label>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    onChange={(e) => setSwing(!swing)}
+                  />
+                  <div className="icon-box">
+                    <img
+                      className="icon"
+                      src="/images/icons/swing.svg"
+                      alt="swing"
+                    />
+                  </div>
+                </label>
+              </li>
 
-            <label>
-              Toilet
-              <input
-                type="checkbox"
-                checked={toilet}
-                name=""
-                onChange={(e) => setToilet(!toilet)}
-              />
-            </label>
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    onChange={(e) => setSander(!sander)}
+                  />
+                  <div className="icon-box">
+                    <img
+                      className="icon"
+                      src="/images/icons/sand-box.svg"
+                      alt="sand box"
+                    />
+                  </div>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    onChange={(e) => setRollerBungge(!rollerBungge)}
+                  />
+                  <div className="icon-box">
+                    <img
+                      className="icon"
+                      src="/images/icons/rollerBungee.svg"
+                      alt="bungee"
+                    />
+                  </div>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    // onChange={(e) => setRollerBungge(!rollerBungge)}
+                  />
+                  <div className="icon-box">
+                    <img
+                      className="icon"
+                      src="/images/icons/pitch.svg"
+                      alt="pitch"
+                    />
+                  </div>
+                </label>
+              </li>
+            </ul>
 
             <button className="btn btn-warning" type="submit">
               {" "}
