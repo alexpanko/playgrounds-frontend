@@ -5,7 +5,7 @@ const playgrounds = [
             "lat":52.368444,
             "lng":4.942424
         },
-        "photo":["../../../public/images/test-PG1.jpeg","../../../public/images/test-PG2.jpeg"],
+        "photo":["../../images/test-PG1.jpeg","../../../public/images/test-PG2.jpeg"],
         "attributes":{
             "slide":true,
             "swing":true
@@ -51,7 +51,8 @@ const playgrounds = [
             "slide":true,
             "swing":true,
             "sander":true,
-            "toilet":true
+            "toilet":true,
+            "rollerBungge":true,
         },
         "approved":false,
     }
