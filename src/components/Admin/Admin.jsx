@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Admin.css";
 import axios from "axios";
+import UserService from "../../services/user-service";
 
 
 export default class Admin extends Component {
@@ -12,6 +13,7 @@ export default class Admin extends Component {
   };
 
   service = new AuthService();
+  userService = new UserService()
 
   componentDidMount() {
     axios
@@ -40,8 +42,23 @@ export default class Admin extends Component {
       .catch((error) => console.log(error));
   }
 
+  handleDelete = (e, id) => {
+    e.preventDefault()
+    this.userService.deletePG(id)
+    .then((result) => {
+      const newList = this.state.playgrounds.filter(x => 
+        x._id !== id
+      )
+      this.setState({ playgrounds: newList});
+
+      console.log(result)
+    })
+    .catch((error) => console.log(error));
+}
+  
+
   render() {
-    console.log(this.state.playgrounds);
+    //console.log(this.state.playgrounds);
     // if (this.props.user && this.props.user.role === "ADMIN") {
     if (this.props.user) {
       return (
@@ -134,12 +151,16 @@ export default class Admin extends Component {
                               {pg.attributes.slide && <strong>Slide</strong>}
                               {pg.attributes.swing && <strong>Swing</strong>}
                               {pg.attributes.rollerBungge && (
-                                <strong>Roller Bungge</strong>
+                                <strong>Zipline</strong>
                               )}
+                              {pg.attributes.sander && <strong>Sand box</strong>}
+                              {pg.attributes.pitch && <strong>Pitch</strong>}
+                              {pg.attributes.toilet && <strong>Toilet</strong>}
                             </p>
                         
                           </div>
                         </Link>
+                        <button onClick={(e) => this.handleDelete(e, pg._id)} className="btn btn-warning" type="submit">Delete</button>
                       </div>
                     ))}
               </div>

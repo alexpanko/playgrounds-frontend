@@ -3,7 +3,8 @@ import UserService from "../../services/user-service";
 
 const service = new UserService();
 
-export default function Edit({ id }) {
+export default function Edit({ id }, props) {
+  const [photo, setPhoto] = useState();
   const [address, setAddress] = useState("");
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
@@ -13,9 +14,11 @@ export default function Edit({ id }) {
   const [toilet, setToilet] = useState(false);
   const [sander, setSander] = useState(false);
   const [pitch, setPitch] = useState(false);
+  const [approved, setApproved] = useState(false)
 
   useEffect(() => {
     service.getEditPG(id).then((data) => {
+      setPhoto(data.photo)
       setAddress(data.address);
       setLat(data.coordinates.lat);
       setLng(data.coordinates.lng);
@@ -35,15 +38,20 @@ export default function Edit({ id }) {
     let result = await service.editPG(
       {
         coordinates: { lat, lng },
-        address,
+        address, 
         attributes: { swing, slide, rollerBungge, sander, toilet, pitch },
+        approved
       },
       id
     );
+    setTimeout(() => {
+      props.history.push("/admin");
+    }, 2000);
   };
-
+ 
   return (
     <div>
+      <img src={photo} alt="Playground"></img>
       <form onSubmit={(e) => handleSubmit(e)}>
         <span>Coordinates:</span>
         <label>
@@ -131,7 +139,15 @@ export default function Edit({ id }) {
             onChange={(e) => setRollerBungge(!rollerBungge)}
           />
         </label>
-
+        <label>
+          Approve
+          <input
+            type="checkbox"
+            checked={approved}
+            name=""
+            onChange={(e) => setApproved(!approved)}
+          />
+        </label>
         <button className="btn btn-warning" type="submit">
           {" "}
           Submit changes{" "}

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import { compareAsc } from 'date-fns';
 
 
 
@@ -12,11 +13,12 @@ class UserService {
     //this.service = service
   }
 
- addPG = (data, setLoaded) => {
-    return this.service.post('/playground/addPG',  data, {
-      onUploadProgress:ProgressEvent => {
-     setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)}
-      })
+//  , { onUploadProgress:ProgressEvent => {
+//     setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)}
+//      }
+
+ addPG = (data) => {
+    return this.service.post('/playground/addPG',  data)
     .then(response => response.data)
     .then(res => { 
       console.log("11111")
@@ -28,9 +30,9 @@ class UserService {
     
   }
 
-  renderPG = (data) => {
-    return this.service.get('/playground/approvedPlaygrounds', data)
-    .then(res => res.data)
+  renderPG = () => {
+    return this.service.get('/playground/approvedPlaygrounds')
+    .then(res => res)
     .catch(err => console.log(err))
   }
 
@@ -45,6 +47,12 @@ class UserService {
     .then(res => res.data)
     .catch(err => console.log(err))
   }
+
+ deletePG = (id) => {
+   return this.service.get(`/playground/deletePG/${id}`)
+   .then(res => res)
+   .catch(err => console.log(err))
+ }
 
 }
 

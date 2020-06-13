@@ -28,19 +28,22 @@ const center = {
 const service = new UserService();
 
 export default function MainMap() {
-
-    // useEffect(() => {
-    //     // axios.get('http://localhost:4000/playground/approvedPlaygrounds')
-    //     // .then(result => {
-    //     //     this.setState({playgrounds:result.data.PG})
-    //     // })
-    //     // .catch((error) => console.log(error));
-    //   });
-
+ 
     const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+
+  const [receivedPG, setReceivedPG] = useState([])
+
+  useEffect(() => {
+    service.renderPG().then(data => {
+      console.log(data.data.PG)
+      setReceivedPG(data.data.PG)
+    })
+    
+  }, [])
+
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
@@ -64,8 +67,10 @@ export default function MainMap() {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(17);
   }, []);
+
   const [selectedPG, setSelectedPG] = useState(null);
-  const [myLocation, setMyLocation] = useState({})
+  const [myLocation, setMyLocation] = useState({});
+
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
@@ -82,7 +87,7 @@ export default function MainMap() {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {markers.map((marker) => (
+        {/* {markers.map((marker) => (
           <Marker
             key={`${marker.lat}-${marker.lng}`}
             position={{ lat: parseFloat(marker.lat), lng: parseFloat(marker.lng) }}
@@ -92,7 +97,7 @@ export default function MainMap() {
          
           />
 
-        ))}
+        ))} */}
         {myLocation ?
          <Marker
            position={{ lat:parseFloat(myLocation.lat), lng:parseFloat(myLocation.lng) }}
@@ -121,6 +126,14 @@ export default function MainMap() {
             }}  
             />
         ))}
+        {receivedPG.map((playground, index) => (
+            <Marker key={index} 
+            position={{lat:parseFloat(playground.coordinates.lat), lng:parseFloat(playground.coordinates.lng)}}
+            onClick={() => {
+                setSelectedPG(playground)
+            }}  
+            />
+        ))} 
         {selectedPG && (
             <InfoWindow
                 onCloseClick={() => {
@@ -176,7 +189,7 @@ export default function MainMap() {
           );
         }}
       >
-        <img src="/images/compass.svg" alt="compass" />
+        <img src="/images/icons/target.svg" alt="compass" />
       </button>
     );
   

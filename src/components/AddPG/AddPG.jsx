@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import UserService from "../../services/user-service";
 import { maxSelectPhoto, checkPhotoSize } from "./handlePhotoUpload";
-import { Progress } from "reactstrap";
+//import { Progress } from "reactstrap";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AddPG.scss"
@@ -18,28 +18,42 @@ export default function ShowPG(props) {
   const [toilet, setToilet] = useState(false);
   const [sander, setSander] = useState(false);
   const [pitch, setPitch] =useState(false);
-  const [loaded, setLoaded] = useState(0);
-  const [PGlocation, setPGlocation] = useState({})
+  //const [loaded, setLoaded] = useState(0);
+  const [PGcoords, setPGcoords] = useState({})
   const [showModal, setShowModal] = useState(true)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const PGlocation = PGcoords
     const formData = new FormData();
-    console.log("photo", photo);
+    // console.log("LOCATION",PGlocation);
+    // console.log(formData)
+
     Array.from(photo).forEach((element) => {
       formData.append("photo", element);
     });
+    formData.append("lat", PGlocation.lat);
+    formData.append("lng", PGlocation.lng);
     formData.append("address", address);
-    formData.append("attributes", {
-      slide,
-      swing,
-      rollerBungge,
-      sander,
-      toilet,
-      pitch
-    });
+    formData.append("slide", slide)
+    formData.append("swing", swing);
+    formData.append("rollerBungge", rollerBungge);
+    formData.append("sander", sander);
+    formData.append("toilet", toilet);
+    formData.append("pitch", pitch);
+    
 
-    let result = await service.addPG(formData, setLoaded);
+
+    // formData.append("attributes", {
+    //   slide,
+    //   swing,
+    //   rollerBungge,
+    //   sander,
+    //   toilet,
+    //   pitch
+    // });
+    
+    let result = await service.addPG(formData);
     setTimeout(() => {
       props.history.push("/main-map");
     }, 2000);
@@ -56,7 +70,7 @@ export default function ShowPG(props) {
     result && 
       navigator.geolocation.getCurrentPosition(
           (position) => {
-            setPGlocation({
+            setPGcoords({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             });
@@ -66,15 +80,15 @@ export default function ShowPG(props) {
     setShowModal(false);
   }
   
-  console.log({PGlocation})
+  //console.log({PGcoords})
   return (
     <>
      {showModal && <Modal handleModal={handleModal}/>}
-     <div className="progress-bar">
+     {/* <div className="progress-bar">
               <Progress max="100" color="success" value={loaded}>
                 {Math.round(loaded, 2)}%
               </Progress>
-            </div>
+            </div> */}
       <div className="adding-form">
       
         <div>
@@ -101,7 +115,7 @@ export default function ShowPG(props) {
 
             <ul>
               <li>
-                <label>
+                <label> Toilet
                   <input
                     type="checkbox"
                     name=""
@@ -118,7 +132,7 @@ export default function ShowPG(props) {
               </li>
 
               <li>
-                <label>
+                <label> Slide
                   <input
                     type="checkbox"
                     name=""
@@ -135,7 +149,7 @@ export default function ShowPG(props) {
               </li>
 
               <li>
-                <label>
+                <label> Swing
                   <input
                     type="checkbox"
                     name=""
@@ -152,7 +166,7 @@ export default function ShowPG(props) {
               </li>
 
               <li>
-                <label>
+                <label> Sand box
                   <input
                     type="checkbox"
                     name=""
@@ -169,7 +183,7 @@ export default function ShowPG(props) {
               </li>
 
               <li>
-                <label>
+                <label> Zipline
                   <input
                     type="checkbox"
                     name=""
@@ -186,7 +200,7 @@ export default function ShowPG(props) {
               </li>
 
               <li>
-                <label>
+                <label> Pitch
                   <input
                     type="checkbox"
                     name=""
