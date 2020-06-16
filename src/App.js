@@ -8,6 +8,7 @@ import AddPG from './components/AddPG/AddPG';
 import MainMap from './components/MainMap/MainMap';
 import Admin from './components/Admin/Admin'
 import AuthService from './services/auth-service'
+import Edit from './components/Edit PG/Edit';
 
 export default class App extends Component {
 
@@ -64,7 +65,9 @@ export default class App extends Component {
           <Route exact path='/addPG' component={AddPG} />  
           <Route exact path='/main-map' component={MainMap} />     
           <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />
-          <Route exact path='/admin' render={() => <Admin user={this.state.user} setUser={this.setUser} />} />           
+          <Route exact path='/admin' render={() => <Admin user={this.state.user} setUser={this.setUser} />} /> 
+          <Route exact path='/edit/:id' render={(props) => <Edit id={props.match.params.id} user={this.state.user} setUser={this.setUser} />} /> 
+       
         </Switch>
       </div>
     )
