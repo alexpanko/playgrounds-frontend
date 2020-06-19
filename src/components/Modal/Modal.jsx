@@ -7,7 +7,7 @@ export default function Modal(props) {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Are you currently at the palyground you want to add?</h5>
+            <h5 className="modal-title">{props.title}</h5>
             <button
               type="button"
               className="close"
@@ -21,7 +21,7 @@ export default function Modal(props) {
           <div className="modal-footer">
             <button type="button" className="btn btn-primary"
             onClick={(e) => props.handleModal(true)}>
-              I am here
+              {props.positiveAnswer}
             </button>
             <button
               type="button"
@@ -29,7 +29,7 @@ export default function Modal(props) {
               data-dismiss="modal"
               onClick={(e) => props.handleModal(false)}
             >
-              No
+              {props.negativeAnswer}
             </button>
           </div>
         </div>

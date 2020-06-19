@@ -11,6 +11,7 @@ import {
 import {playgrounds} from "../Playground/PG"
 import "../AddPG/AddPG.scss"
 
+
 const libraries = ["places"];
 const mapContainerStyle = {
   height: "90vh",
@@ -44,19 +45,8 @@ export default function MainMap() {
     
   }, [])
 
-  const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
-  const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
-  }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -74,6 +64,7 @@ export default function MainMap() {
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
+  console.log({receivedPG})
   return (
     <div>
 
@@ -84,20 +75,10 @@ export default function MainMap() {
         zoom={13}
         center={center}
         options={options}
-        onClick={onMapClick}
+        //onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {/* {markers.map((marker) => (
-          <Marker
-            key={`${marker.lat}-${marker.lng}`}
-            position={{ lat: parseFloat(marker.lat), lng: parseFloat(marker.lng) }}
-            onClick={() => {
-              setSelected(marker);
-            }}
-         
-          />
-
-        ))} */}
+       
         {myLocation ?
          <Marker
            position={{ lat:parseFloat(myLocation.lat), lng:parseFloat(myLocation.lng) }}
@@ -147,8 +128,8 @@ export default function MainMap() {
                 <div className="card border-0" style={{width: "18rem"}}>
                     <img src={selectedPG.photo[0]} className="card-img-top" alt="PGPhoto"></img>
                     <div class="card-body">
-                        <h5 className="card-title">{selectedPG.address}</h5>
-                        <p className="card-text d-flex justify-content-between font-weight-bold">
+                        
+            <p className="card-text d-flex justify-content-between font-weight-bold">
                             {selectedPG.attributes.slide && <img className="icon icon-box" src="/images/icons/slide.svg" alt="Slide"/>}
                             {selectedPG.attributes.swing && <img className="icon icon-box" src="/images/icons/swing.svg" alt="Swing"/>}
                             {selectedPG.attributes.rollerBungge && <img className="icon icon-box" src="/images/icons/zipline.svg" alt="Zipline"/>}
@@ -164,7 +145,7 @@ export default function MainMap() {
 
       <Link to="/addPG"> Add new playground</Link>
       <Link to="/admin"> Check new playgrounds</Link>
-      <Link to="/logout"> Logout</Link>
+      <Link to="/"> Logout</Link>
     </div>
   );
   function myPosition (position){
