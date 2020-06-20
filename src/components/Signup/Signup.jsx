@@ -3,6 +3,7 @@ import './Signup.css'
 import AuthService from '../../services/auth-service'
 import {Redirect} from 'react-router-dom'
 import { Route, Link, Switch } from 'react-router-dom'
+import Navigation from '../Navigation/Navigation'
 
 
 export default class Signup extends Component {
@@ -34,13 +35,14 @@ export default class Signup extends Component {
       }
         return (
             <div className="container">
-                <div className="row">
+                <Navigation />
+                {/* <div className="row">
                     <div className="col">
                         <h1 className="text-brown text-center">
                             <span className="highlight">Playgrounds in Amsterdam</span>
                         </h1>
                     </div>
-                </div>
+                </div> */}
                 <div className="row mt-5">
                     <div className="col-lg-2"></div>
                     <div className="col-lg-8">

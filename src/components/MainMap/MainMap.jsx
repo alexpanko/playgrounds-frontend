@@ -10,6 +10,7 @@ import {
 } from "@react-google-maps/api";
 import {playgrounds} from "../Playground/PG"
 import "../AddPG/AddPG.scss"
+import Navigation from '../Navigation/Navigation'
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -76,8 +77,15 @@ export default function MainMap() {
 
   return (
     <div>
+      <div className="height-10 container">
+        <Navigation />
+      </div>
 
-      <Locate panTo={panTo} />
+      <div className="container-flex">
+      <div className="row">
+      <div className="col">
+
+      <Locate className="pr-10" panTo={panTo} />
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
@@ -162,9 +170,13 @@ export default function MainMap() {
         )}
       </GoogleMap>
 
-      <Link to="/addPG"> Add new playground</Link>
+      </div>
+      </div>
+      </div>
+
+      {/* <Link to="/addPG"> Add new playground</Link>
       <Link to="/admin"> Check new playgrounds</Link>
-      <Link to="/logout"> Logout</Link>
+      <Link to="/logout"> Logout</Link> */}
     </div>
   );
   function myPosition (position){

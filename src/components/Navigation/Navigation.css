@@ -1,0 +1,9 @@
+.navLink {
+    border: none;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.navLink:hover{
+    color: #343a40
+}

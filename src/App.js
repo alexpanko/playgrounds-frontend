@@ -59,6 +59,7 @@ export default class App extends Component {
       <div>
         <Switch>
        { this.state.user && <Redirect exact from="/login" to="/main-map"/>}
+       { this.state.user && <Redirect exact from="/" to="/main-map"/>}
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />  

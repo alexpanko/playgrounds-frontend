@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Login.css";
+import Navigation from '../Navigation/Navigation'
 
 export default class Login extends Component {
   state = {
@@ -34,13 +35,14 @@ export default class Login extends Component {
 
     return (
       <div className="container">
-        <div className="row">
+      <Navigation />
+        {/* <div className="row">
           <div className="col">
             <h1 className="text-brown text-center">
               <span className="highlight">Playgrounds in Amsterdam</span>
             </h1>
           </div>
-        </div>
+        </div> */}
         <div className="row mt-5">
           <div className="col-lg-2"></div>
           <div className="col-lg-8">
