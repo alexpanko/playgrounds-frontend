@@ -18,14 +18,14 @@ video {
 
 .highlight {
   background: linear-gradient(180deg,rgba(255,255,255,0) 40%, #CDDC39 40%);
-  opacity: 90%;
+  /* opacity: 90% !important; */
 }
 
 .highlight-skew {
   /* background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #CDDC39 50%); */
   background-color: #CDDC39;
   transform: skew(30deg);
-  opacity: 90%;
+  /* opacity: 90% !important; */
 }
 
 .skew-30 {

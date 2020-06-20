@@ -24,11 +24,11 @@ export default class Navigation extends Component {
                     <Navbar.Brand className="highlight" href="/">Playgrounds in Amsterdam</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="text-right">
+                        <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/signup">Signup</Nav.Link>
                             <Nav.Link href="/login">Login</Nav.Link>
-                            <Nav.Link href="/main-map">Find playground</Nav.Link>
+                            <Nav.Link href="/main-map">City map</Nav.Link>
                             <Nav.Link href="/addPG">Add playground</Nav.Link>
                             <Nav.Link href="/">
                                 <button className="navLink" onClick={() => this.logoutUser()}>Logout</button>
