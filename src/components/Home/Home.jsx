@@ -12,16 +12,16 @@ export default function Home() {
             <header className="viewport-header">
                 <div className="row">
                     <div className="col">
-                        <div className="highlight-skew">
-                            <h1 className="display-3 text-brown skew-30">
+                        <div>
+                            <h1 className="display-3 text-brown highlight">
                                 Playgrounds in Amsterdam
                             </h1>
                         </div>
-                        <div>
+                        {/* <div>
                             <h1 className="text-brown">
                                 <span className="highlight">Find playground near you</span>
                             </h1>
-                        </div>
+                        </div> */}
                         <div>
                             <Link className="btn btn-info btn-lg mt-5 mx-3 width-150" to="/signup">Signup</Link>
                             <Link className="btn btn-secondary btn-lg mt-5 mx-3 width-150" to="/login">Login</Link>
