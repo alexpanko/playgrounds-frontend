@@ -46,7 +46,7 @@ console.log({PGlocation, PGcoords, newPGonMap});
     formData.append("toilet", toilet);
     formData.append("pitch", pitch);
 
-    let result = await service.addPG(formData);
+     await service.addPG(formData);
     setTimeout(() => {
       props.history.push("/main-map");
     }, 2000);

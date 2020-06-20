@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Login.css";
 import Navigation from '../Navigation/Navigation'

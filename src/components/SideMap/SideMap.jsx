@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../MainMap/MainMap.css";
-import UserService from "../../services/user-service";
+
 
 import {
   GoogleMap,
@@ -26,7 +26,7 @@ const center = {
   lng: 4.895168,
 };
 
-const service = new UserService();
+
 
 export default function SideMap(props) {
 
@@ -36,7 +36,7 @@ export default function SideMap(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const [PGcoords, setPGcoords] = useState({});
+  //const [PGcoords, setPGcoords] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [marker, setMarker] = React.useState([]);
   const mapRef = React.useRef();
@@ -56,8 +56,8 @@ export default function SideMap(props) {
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
-  const PGlocation = PGcoords;
-  console.log(PGlocation);
+  //const PGlocation = PGcoords;
+  //console.log(PGlocation);
 
  
 

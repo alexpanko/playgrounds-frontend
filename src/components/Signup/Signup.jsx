@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Signup.css'
 import AuthService from '../../services/auth-service'
 import {Redirect} from 'react-router-dom'
-import { Route, Link, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation'
 
 
