@@ -19,7 +19,7 @@ class UserService {
 //      }
 
  admin = (data) => {
-   return this.service.get('/plaground/admin', data)
+   return this.service.get('/playground/admin', data)
    .then(res => res.data)
    .catch(err => console.log(err))
  }
