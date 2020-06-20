@@ -35,7 +35,7 @@ export default function Edit({ id, ...props }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let result = await service.editPG(
+   await service.editPG(
       {
         coordinates: { lat, lng },
          
