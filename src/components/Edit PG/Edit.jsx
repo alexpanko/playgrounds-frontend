@@ -3,9 +3,9 @@ import UserService from "../../services/user-service";
 
 const service = new UserService();
 
-export default function Edit({ id }, props) {
+export default function Edit({ id, ...props }) {
   const [photo, setPhoto] = useState();
-  const [address, setAddress] = useState("");
+  
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
   const [slide, setSlide] = useState(false);
@@ -19,7 +19,7 @@ export default function Edit({ id }, props) {
   useEffect(() => {
     service.getEditPG(id).then((data) => {
       setPhoto(data.photo)
-      setAddress(data.address);
+      
       setLat(data.coordinates.lat);
       setLng(data.coordinates.lng);
       setSlide(data.attributes.slide);
@@ -28,7 +28,7 @@ export default function Edit({ id }, props) {
       setSander(data.attributes.sander);
       setToilet(data.attributes.toilet);
       setPitch(data.attributes.pitch);
-
+      setApproved(data.approved)
       console.log({ data });
     });
   }, [id]);
@@ -38,7 +38,7 @@ export default function Edit({ id }, props) {
     let result = await service.editPG(
       {
         coordinates: { lat, lng },
-        address, 
+         
         attributes: { swing, slide, rollerBungge, sander, toilet, pitch },
         approved
       },
@@ -75,16 +75,7 @@ export default function Edit({ id }, props) {
           />
         </label>
 
-        <label>
-          {" "}
-          Addres
-          <input
-            type="text"
-            value={address}
-            name=""
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </label>
+        
         <label>
           {" "}
           Pitch

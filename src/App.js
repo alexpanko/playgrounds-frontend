@@ -9,6 +9,7 @@ import MainMap from './components/MainMap/MainMap';
 import Admin from './components/Admin/Admin'
 import AuthService from './services/auth-service'
 import Edit from './components/Edit PG/Edit';
+import SideMap from './components/SideMap/SideMap.jsx'
 
 export default class App extends Component {
 
@@ -67,8 +68,8 @@ export default class App extends Component {
           <Route exact path='/main-map' component={MainMap} />     
           <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />
           <Route exact path='/admin' render={() => <Admin user={this.state.user} setUser={this.setUser} />} /> 
-          <Route exact path='/edit/:id' render={(props) => <Edit id={props.match.params.id} user={this.state.user} setUser={this.setUser} />} /> 
-       
+          <Route exact path='/edit/:id' render={(props) => <Edit {...props} id={props.match.params.id} user={this.state.user} setUser={this.setUser} />} /> 
+          <Route exact path='/side-map' component={SideMap} /> 
         </Switch>
       </div>
     )
