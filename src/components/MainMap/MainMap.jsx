@@ -15,7 +15,7 @@ import Navigation from '../Navigation/Navigation'
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "90vh",
+  height: "93vh",
   width: "100vw",
 };
 const options = {
@@ -68,7 +68,7 @@ export default function MainMap() {
   console.log({receivedPG})
   return (
     <div>
-      <div className="height-10 container">
+      <div className="height-10 container pb-3">
         <Navigation />
       </div>
 
