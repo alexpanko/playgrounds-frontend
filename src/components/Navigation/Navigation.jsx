@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Navbar, Nav } from 'react-bootstrap';
 import AuthService from "../../services/auth-service";
-import Home from '../Home/Home';
-import { Route, Link, Switch, Redirect } from 'react-router-dom'
+//import Home from '../Home/Home';
+//import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import "./Navigation.css";
 
 

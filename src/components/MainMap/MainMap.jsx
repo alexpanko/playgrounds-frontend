@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./MainMap.css";
 import UserService from "../../services/user-service";
-import { Link } from "react-router-dom";
+//mport { Link } from "react-router-dom";
 import {
   GoogleMap,
   useLoadScript,
