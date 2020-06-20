@@ -18,6 +18,12 @@ class UserService {
 //     setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)}
 //      }
 
+ admin = (data) => {
+   return this.service.get('/plaground/admin', data)
+   .then(res => res)
+   .catch(err => console.log(err))
+ }
+
  addPG = (data) => {
     return this.service.post('/playground/addPG',  data)
     .then(response => response.data)
@@ -29,6 +35,12 @@ class UserService {
       toast.error('upload fail')
   })
     
+  }
+
+  filterPG = (filter) => {
+    return this.service.get(`/playground/admin/filter?filterApproved=${filter}`)
+    .then(res => res.data)
+    .catch(err => console.log(err))
   }
 
   renderPG = () => {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Admin.css";
-import axios from "axios";
+//import axios from "axios";
 import UserService from "../../services/user-service";
 
 
@@ -16,12 +16,13 @@ export default class Admin extends Component {
   userService = new UserService()
 
   componentDidMount() {
-    axios
-      .get("http://localhost:4000/playground/admin")
-      .then((result) => {
-        this.setState({ playgrounds: result.data.PG });
-      })
-      .catch((error) => console.log(error));
+    this.userService.admin(this.data)
+    // axios
+    //   .get("http://localhost:4000/playground/admin")
+    //   .then((result) => {
+    //     this.setState({ playgrounds: result.data.PG });
+    //   })
+    //   .catch((error) => console.log(error));
   }
 
   logoutUser = () => {
@@ -32,14 +33,20 @@ export default class Admin extends Component {
 
   filterPlaygrounds(e, filter) {
     e.preventDefault();
-    axios
-      .get(
-        `http://localhost:4000/playground/admin/filter?filterApproved=${filter}`
-      )
-      .then((result) => {
-        this.setState({ playgrounds: result.data.PG });
-      })
-      .catch((error) => console.log(error));
+    this.userService.filter(filter)
+    .then((result) => {
+          this.setState({ playgrounds: result.data.PG });
+        })
+        .catch((error) => console.log(error));
+
+    // axios
+    //   .get(
+    //     `http://localhost:4000/playground/admin/filter?filterApproved=${filter}`
+    //   )
+    //   .then((result) => {
+    //     this.setState({ playgrounds: result.data.PG });
+    //   })
+    //   .catch((error) => console.log(error));
   }
 
   handleDelete = (e, id) => {
