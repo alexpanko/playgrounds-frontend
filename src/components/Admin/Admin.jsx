@@ -17,12 +17,9 @@ export default class Admin extends Component {
 
   componentDidMount() {
     this.userService.admin(this.data)
-    // axios
-    //   .get("http://localhost:4000/playground/admin")
-    //   .then((result) => {
-    //     this.setState({ playgrounds: result.data.PG });
-    //   })
-    //   .catch((error) => console.log(error));
+    .then((result) => {
+      this.setState({ playgrounds: result.data.PG });
+    })
   }
 
   logoutUser = () => {
