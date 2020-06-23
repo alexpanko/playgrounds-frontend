@@ -143,7 +143,7 @@ export default function MainMap() {
                           <img class="d-block w-100" src={pg.photo} alt="Slide" />
                         </div>                        
                       )} */}
-                        <div class="carousel-item">
+                        <div class="carousel-item-active">
                           <img class="d-block w-100" src={selectedPG.photo[0]} alt="Slide" />
                         </div> 
                         <div class="carousel-item">
