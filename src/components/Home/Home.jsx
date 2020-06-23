@@ -13,7 +13,7 @@ export default function Home() {
                 <div className="row">
                     <div className="col">
                         <div>
-                            <h1 className="display-3 text-brown highlight title-mob">
+                            <h1 className="display-3 text-brown highlight-title title-mob">
                                 Playgrounds in Amsterdam
                             </h1>
                         </div>
