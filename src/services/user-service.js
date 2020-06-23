@@ -31,6 +31,18 @@ class UserService {
     
   }
 
+  admin = () => {
+    return this.service.get('/playground/admin')
+    .then(res => res.data)
+    .catch(err => console.log(err))
+  }
+
+  filterPG = (filter) =>{
+    return this.service.get(`/playground/admin/filter?filterApproved=${filter}`)
+    .then(res => res.data)
+    .catch(err => console.log(err))
+  }
+
   renderPG = () => {
     return this.service.get('/playground/approvedPlaygrounds')
     .then(res => res)

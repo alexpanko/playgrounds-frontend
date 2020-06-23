@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Admin.css";
-import axios from "axios";
 import UserService from "../../services/user-service";
 
 
@@ -15,14 +14,23 @@ export default class Admin extends Component {
   service = new AuthService();
   userService = new UserService()
 
+  // componentDidMount() {
+  //   axios
+  //     .get("http://localhost:4000/playground/admin")
+  //     .then((result) => {
+  //       this.setState({ playgrounds: result.data.PG });
+  //     })
+  //     .catch((error) => console.log(error));
+  // }
+
   componentDidMount() {
-    axios
-      .get("http://localhost:4000/playground/admin")
-      .then((result) => {
-        this.setState({ playgrounds: result.data.PG });
-      })
-      .catch((error) => console.log(error));
+    this.userService.admin()
+    .then((data) => {
+      
+      this.setState({ playgrounds: data.PG });
+    })
   }
+ 
 
   logoutUser = () => {
     this.service.logout().then(() => {
@@ -32,12 +40,9 @@ export default class Admin extends Component {
 
   filterPlaygrounds(e, filter) {
     e.preventDefault();
-    axios
-      .get(
-        `http://localhost:4000/playground/admin/filter?filterApproved=${filter}`
-      )
+    this.userService.filterPG(filter)
       .then((result) => {
-        this.setState({ playgrounds: result.data.PG });
+        this.setState({ playgrounds: result.PG });
       })
       .catch((error) => console.log(error));
   }
