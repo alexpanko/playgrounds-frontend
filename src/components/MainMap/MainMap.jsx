@@ -134,9 +134,9 @@ export default function MainMap() {
                 }}
                 >
                 <div className="card border-0" style={{width: "18rem"}}>
-                    {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
+                    <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img>
                     
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    {/* <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
                       {selectedPG.map((pg, index) => 
                         <div class="carousel-item" key={index}>
@@ -153,7 +153,7 @@ export default function MainMap() {
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                       </a>
-                    </div>
+                    </div> */}
                     
                     <div class="card-body">
                         
