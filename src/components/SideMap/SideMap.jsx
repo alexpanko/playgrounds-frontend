@@ -78,9 +78,9 @@ export default function SideMap(props) {
           handleModal={handleModal}
         />
       )}
-      <h1 className="text-center pb-2">
+      <h2 className="text-center pb-2">
         Select playground location
-      </h1>
+      </h2>
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
