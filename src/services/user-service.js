@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 class UserService {
   constructor() {
     this.service = axios.create({
-      // baseURL: 'http://localhost:4000/',
-      baseURL: process.env.REACT_APP_BASE_URL,
+      baseURL: 'http://localhost:4000/',
+      // baseURL: process.env.REACT_APP_BASE_URL,
       withCredentials: true
     })
     //this.service = service
@@ -20,7 +20,7 @@ class UserService {
 
  admin = (data) => {
    return this.service.get('/playground/admin', data)
-   .then(res => res.data)
+   .then(res => console.log(res.data))
    .catch(err => console.log(err))
  }
 

@@ -4,8 +4,8 @@ import React from "react";
 export default function Modal(props) {
   return (
     <div className="modal" style={{display: 'block'}} tabIndex="-1" role="dialog">
-      <div className="modal-dialog" role="document">
-        <div className="modal-content">
+      <div className="modal-dialog my-5" role="document">
+        <div className="modal-content" style={{backgroundColor: '#FFFBEF'}}>
           <div className="modal-header">
             <h5 className="modal-title">{props.title}</h5>
             <button

@@ -10,7 +10,7 @@ import {
 } from "@react-google-maps/api";
 import {playgrounds} from "../Playground/PG"
 import "../AddPG/AddPG.scss"
-import Navigation from '../Navigation/Navigation'
+// import Navigation from '../Navigation/Navigation'
 
 
 const libraries = ["places"];
@@ -69,7 +69,7 @@ export default function MainMap() {
   return (
     <div>
       <div className="height-10 container pb-3">
-        <Navigation />
+        {/* <Navigation /> */}
       </div>
 
       <div className="container-flex">
@@ -134,10 +134,30 @@ export default function MainMap() {
                 }}
                 >
                 <div className="card border-0" style={{width: "18rem"}}>
-                    <img src={selectedPG.photo[0]} className="card-img-top" alt="PGPhoto"></img>
+                    {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
+                    
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                      {selectedPG.photo.map((img, index) => 
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="img" alt="Slide" />
+                        </div>                        
+                      )}
+
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    
                     <div class="card-body">
                         
-            <p className="card-text d-flex justify-content-between font-weight-bold">
+            <p className="card-text d-flex justify-content-around flex-wrap font-weight-bold">
                             {selectedPG.attributes.slide && <img className="icon icon-box" src="/images/icons/slide.svg" alt="Slide"/>}
                             {selectedPG.attributes.swing && <img className="icon icon-box" src="/images/icons/swing.svg" alt="Swing"/>}
                             {selectedPG.attributes.rollerBungge && <img className="icon icon-box" src="/images/icons/zipline.svg" alt="Zipline"/>}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Login.css";
-import Navigation from '../Navigation/Navigation'
 
 export default class Login extends Component {
   state = {
@@ -35,7 +34,6 @@ export default class Login extends Component {
 
     return (
       <div className="container">
-      <Navigation />
         {/* <div className="row">
           <div className="col">
             <h1 className="text-brown text-center">
@@ -60,16 +58,16 @@ export default class Login extends Component {
         <div className="row">
           <div className="col-lg-2"></div>
           <div className="col-lg-8">
-            <div className="text-center">
+            {/* <div className="text-center">
               <Link className="btn btn-info my-3 width-300" to="/google">
                 Login with Google
               </Link>
-            </div>
+            </div> */}
             <div className="hr-text text-center">
               <hr />
-              <span className="bg-white text-secondary font-italic px-2">
+              {/* <span className="bg-white text-secondary font-italic px-2">
                 or...
-              </span>
+              </span> */}
             </div>
             <form
               className="mt-5 d-flex flex-column align-items-center"

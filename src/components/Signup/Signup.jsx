@@ -3,7 +3,6 @@ import './Signup.css'
 import AuthService from '../../services/auth-service'
 import {Redirect} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import Navigation from '../Navigation/Navigation'
 
 
 export default class Signup extends Component {
@@ -35,7 +34,6 @@ export default class Signup extends Component {
       }
         return (
             <div className="container">
-                <Navigation />
                 {/* <div className="row">
                     <div className="col">
                         <h1 className="text-brown text-center">
@@ -57,12 +55,12 @@ export default class Signup extends Component {
                 <div className="row">
                     <div className="col-lg-2"></div>
                     <div className="col-lg-8">
-                        <div className="text-center">
+                        {/* <div className="text-center">
                             <Link className="btn btn-info my-3 width-300" to="/google">Sign up with Google</Link>
-                        </div> 
+                        </div>  */}
                         <div className="hr-text text-center">
                             <hr />
-                            <span className="bg-white text-secondary font-italic px-2">or...</span>
+                            {/* <span className="bg-white text-secondary font-italic px-2">or...</span> */}
                         </div>
                         <form className="mt-5 d-flex flex-column align-items-center" onSubmit={(e) => this.handleSubmit(e)}>
                             <div className="form-group">

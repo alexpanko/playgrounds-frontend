@@ -10,6 +10,7 @@ import Admin from './components/Admin/Admin'
 import AuthService from './services/auth-service'
 import Edit from './components/Edit PG/Edit';
 import SideMap from './components/SideMap/SideMap.jsx'
+import Navigation from './components/Navigation/Navigation';
 
 export default class App extends Component {
 
@@ -58,6 +59,9 @@ export default class App extends Component {
 
     return (
       <div>
+        <div className="container">
+          <Navigation user={this.state.user} setUser={this.setUser} />
+        </div>
         <Switch>
        { this.state.user && <Redirect exact from="/login" to="/main-map"/>}
        { this.state.user && <Redirect exact from="/" to="/main-map"/>}
@@ -66,7 +70,7 @@ export default class App extends Component {
           <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />  
           <Route exact path='/addPG' component={AddPG} />  
           <Route exact path='/main-map' component={MainMap} />     
-          <Route exact path='/login' render={() => <Login setUser={this.setUser} />} />
+          {/* <Route exact path='/login' render={() => <Login setUser={this.setUser} />} /> */}
           <Route exact path='/admin' render={() => <Admin user={this.state.user} setUser={this.setUser} />} /> 
           <Route exact path='/edit/:id' render={(props) => <Edit {...props} id={props.match.params.id} user={this.state.user} setUser={this.setUser} />} /> 
           <Route exact path='/side-map' component={SideMap} /> 

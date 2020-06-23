@@ -26,14 +26,15 @@ export default class Navigation extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/signup">Signup</Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
-                            <Nav.Link href="/main-map">City map</Nav.Link>
-                            <Nav.Link href="/addPG">Add playground</Nav.Link>
-                            <Nav.Link href="/">
+                            {!this.props.user && <Nav.Link href="/signup">Signup</Nav.Link>}
+                            {!this.props.user && <Nav.Link href="/login">Login</Nav.Link>}
+                            {this.props.user && <Nav.Link href="/main-map">City map</Nav.Link>}
+                            {this.props.user && <Nav.Link href="/addPG">Add playground</Nav.Link>}
+                            {this.props.user && <Nav.Link href="/">
                                 <button className="navLink" onClick={() => this.logoutUser()}>Logout</button>
-                            </Nav.Link>
-                            <Nav.Link href="/admin">Admin</Nav.Link>
+                            </Nav.Link>}
+                            {this.props.user && this.props.user.role === "ADMIN" && <Nav.Link href="/admin">Admin</Nav.Link>}
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
