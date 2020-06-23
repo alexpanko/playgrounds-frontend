@@ -138,9 +138,6 @@ export default function MainMap() {
                     
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                      <div class="carousel-item-active">
-                          <img class="d-block w-100" src={selectedPG.photo[0]} alt="Slide" />
-                        </div>
                         <div class="carousel-item-active">
                           <img class="d-block w-100" src={selectedPG.photo[0]} alt="Slide" />
                         </div> 
@@ -170,6 +167,8 @@ export default function MainMap() {
                       </a>
                     </div>
                     
+                    
+
                     <div class="card-body">
                         
             <p className="card-text d-flex justify-content-around flex-wrap font-weight-bold">
