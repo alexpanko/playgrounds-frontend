@@ -133,21 +133,22 @@ export default function MainMap() {
                     lng: selectedPG.coordinates.lng
                 }}
                 >
-                <div className="card border-0" style={{width: "18rem"}}>
+                <div className="card border-0" style={{width: "15rem"}}>
+                    {/* ONE IMAGE: START */}
                     {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
-                    
+                    {/* ONE IMAGE: END */}
+
+                    {/* CAROUSEL TEST: START */}
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                        <div class="carousel-item-active">
-                          <img class="d-block w-100" src={selectedPG.photo[0]} alt="Slide" />
-                        </div> 
-                      {/* {selectedPG.photo.map((img, index) => 
-                        <div class="carousel-item" key={index}>
-                          <img class="d-block w-100" src={img} alt="Slide" />
-                        </div>                        
-                      )} */}
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src="https://starbookbucket.s3.amazonaws.com/1592928863464" alt="First slide" />
+                        </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src={selectedPG.photo[1]} alt="Slide" />
+                          <img class="d-block w-100" src="https://playgrounds-in-amsterdam.netlify.app/images/test-PG4.jpeg" alt="Second slide" />
+                        </div>
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="https://playgrounds-in-amsterdam.netlify.app/images/test-PG6.jpeg" alt="Third slide" />
                         </div>
                       </div>
                       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -159,7 +160,9 @@ export default function MainMap() {
                         <span class="sr-only">Next</span>
                       </a>
                     </div>
-                    
+                    {/* CAROUSEL TEST: END */}
+
+
                     
 
                     <div class="card-body">
