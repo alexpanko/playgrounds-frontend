@@ -133,7 +133,7 @@ export default function MainMap() {
                     lng: selectedPG.coordinates.lng
                 }}
                 >
-                <div className="card border-0" style={{width: "14rem"}}>
+                <div className="card border-0" style={{width: "13rem"}}>
                     {/* ONE IMAGE: START */}
                     {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
                     {/* ONE IMAGE: END */}
@@ -149,12 +149,7 @@ export default function MainMap() {
                             <img class="d-block w-100" src={img} alt="slide" />
                           </div>                        
                         )}
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="https://playgrounds-in-amsterdam.netlify.app/images/test-PG4.jpeg" alt="slide" />
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="https://playgrounds-in-amsterdam.netlify.app/images/test-PG6.jpeg" alt="slide" />
-                        </div>
+                        
                       </div>
                       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
