@@ -49,6 +49,6 @@
 } */
 
 .my-card-img {
-    max-width: 270px !important;
-    /* height: auto; */
+    width: 270px !important;
+    height: auto;
 }
