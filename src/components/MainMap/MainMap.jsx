@@ -133,7 +133,7 @@ export default function MainMap() {
                     lng: selectedPG.coordinates.lng
                 }}
                 >
-                <div className="card border-0" style={{width: "15rem"}}>
+                <div className="card border-0" style={{width: "14rem"}}>
                     {/* ONE IMAGE: START */}
                     {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
                     {/* ONE IMAGE: END */}
@@ -141,7 +141,7 @@ export default function MainMap() {
                     {/* CAROUSEL TEST: START */}
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item">
                           <img class="d-block w-100" src="https://starbookbucket.s3.amazonaws.com/1592928863464" alt="slide" />
                         </div>
                         <div class="carousel-item">
