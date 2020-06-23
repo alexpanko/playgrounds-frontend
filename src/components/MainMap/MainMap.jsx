@@ -138,9 +138,9 @@ export default function MainMap() {
                     
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                      {selectedPG.photo.map((img, index) => 
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src={img} alt="Slide" />
+                      {selectedPG.map((pg, index) => 
+                        <div class="carousel-item" key={index}>
+                          <img class="d-block w-100" src={pg.photo} alt="Slide" />
                         </div>                        
                       )}
 
