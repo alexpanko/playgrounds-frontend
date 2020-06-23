@@ -140,7 +140,7 @@ export default function MainMap() {
                       <div class="carousel-inner">
                       {selectedPG.photo.map((img, index) => 
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="img" alt="Slide" />
+                          <img class="d-block w-100" src={img} alt="Slide" />
                         </div>                        
                       )}
 
