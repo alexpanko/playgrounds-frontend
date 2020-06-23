@@ -4,7 +4,7 @@ import AuthService from "../../services/auth-service";
 import "./Admin.css";
 import axios from "axios";
 import UserService from "../../services/user-service";
-import Navigation from '../Navigation/Navigation';
+// import Navigation from '../Navigation/Navigation';
 
 
 export default class Admin extends Component {
