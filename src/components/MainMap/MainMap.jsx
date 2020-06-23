@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./MainMap.css";
 import UserService from "../../services/user-service";
 //mport { Link } from "react-router-dom";
@@ -7,11 +7,12 @@ import {
   useLoadScript,
   Marker,
   InfoWindow,
+  DirectionsRenderer,
 } from "@react-google-maps/api";
-import {playgrounds} from "../Playground/PG"
-import "../AddPG/AddPG.scss"
-import Navigation from '../Navigation/Navigation'
-
+import { playgrounds } from "../Playground/PG";
+import "../AddPG/AddPG.scss";
+import Navigation from "../Navigation/Navigation";
+import ReactStars from "react-rating-stars-component";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -30,25 +31,28 @@ const center = {
 const service = new UserService();
 
 export default function MainMap() {
- 
-    const { isLoaded, loadError } = useLoadScript({
+  
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
+
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-  const [receivedPG, setReceivedPG] = useState([])
+  const [receivedPG, setReceivedPG] = useState([]);
 
   useEffect(() => {
-    service.renderPG().then(data => {
-      console.log(data.data.PG)
-      setReceivedPG(data.data.PG)
-    })
-    
-  }, [])
+    service.renderPG().then((data) => {
+      console.log(data.data.PG);
+      setReceivedPG(data.data.PG);
+    });
+  }, []);
 
   const [selected, setSelected] = React.useState(null);
 
-
+  
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
@@ -65,7 +69,7 @@ export default function MainMap() {
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
-  console.log({receivedPG})
+  console.log({ receivedPG });
   return (
     <div>
       <div className="height-10 container">
@@ -73,95 +77,152 @@ export default function MainMap() {
       </div>
 
       <div className="container-flex">
-      <div className="row">
-      <div className="col">
-
-      <Locate className="pr-10" panTo={panTo} />
-      <GoogleMap
-        id="map"
-        mapContainerStyle={mapContainerStyle}
-        zoom={13}
-        center={center}
-        options={options}
-        //onClick={onMapClick}
-        onLoad={onMapLoad}
-      >
-       
-        {myLocation ?
-         <Marker
-           position={{ lat:parseFloat(myLocation.lat), lng:parseFloat(myLocation.lng) }}
-           icon={{
-            url: `/images/icons/target.svg`,
-            scaledSize: new window.google.maps.Size(25, 25)
-          }}
-           /> : null}
-        {selected ? (
-          <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
-            onCloseClick={() => {
-              setSelected(null);
-            }}
-          >
-            <div>
-              <h2>Playground</h2>
-            </div>
-          </InfoWindow>
-        ) : null}
-        {playgrounds.map((playground, index) => (
-            <Marker key={index} 
-            position={{lat:parseFloat(playground.coordinates.lat), lng:parseFloat(playground.coordinates.lng)}}
-            onClick={() => {
-                setSelectedPG(playground)
-            }}  
-            />
-        ))}
-        {receivedPG.map((playground, index) => (
-            <Marker key={index} 
-            position={{lat:parseFloat(playground.coordinates.lat), lng:parseFloat(playground.coordinates.lng)}}
-            onClick={() => {
-                setSelectedPG(playground)
-            }}  
-            />
-        ))} 
-        {selectedPG && (
-            <InfoWindow
-                onCloseClick={() => {
-                    setSelectedPG(null);
-                }}
-                position={{
-                    lat: selectedPG.coordinates.lat,
-                    lng: selectedPG.coordinates.lng
-                }}
+        <div className="row">
+          <div className="col">
+            <Locate className="pr-10" panTo={panTo} />
+            <GoogleMap
+              id="map"
+              mapContainerStyle={mapContainerStyle}
+              zoom={13}
+              center={center}
+              options={options}
+              //onClick={onMapClick}
+              onLoad={onMapLoad}
+            >
+              {myLocation ? (
+                <Marker
+                  position={{
+                    lat: parseFloat(myLocation.lat),
+                    lng: parseFloat(myLocation.lng),
+                  }}
+                  icon={{
+                    url: `/images/icons/target.svg`,
+                    scaledSize: new window.google.maps.Size(25, 25),
+                  }}
+                />
+              ) : null}
+              {selected ? (
+                <InfoWindow
+                  position={{ lat: selected.lat, lng: selected.lng }}
+                  onCloseClick={() => {
+                    setSelected(null);
+                  }}
                 >
-                <div className="card border-0" style={{width: "18rem"}}>
-                    <img src={selectedPG.photo[0]} className="card-img-top" alt="PGPhoto"></img>
-                    <div class="card-body">
-                        
-            <p className="card-text d-flex justify-content-between font-weight-bold">
-                            {selectedPG.attributes.slide && <img className="icon icon-box" src="/images/icons/slide.svg" alt="Slide"/>}
-                            {selectedPG.attributes.swing && <img className="icon icon-box" src="/images/icons/swing.svg" alt="Swing"/>}
-                            {selectedPG.attributes.rollerBungge && <img className="icon icon-box" src="/images/icons/zipline.svg" alt="Zipline"/>}
-                            {selectedPG.attributes.sander && <img className="icon icon-box" src="/images/icons/sand-box.svg" alt="Sander"/>}
-                            {selectedPG.attributes.toilet && <img className="icon icon-box" src="/images/icons/wc.svg" alt="Toilet"/>}
-                            {selectedPG.attributes.pitch && <img className="icon icon-box" src="/images/icons/pitch.svg" alt="Pitch"/>}
-                        </p>
+                  <div>
+                    <h2>Playground</h2>
+                  </div>
+                </InfoWindow>
+              ) : null}
+              {playgrounds.map((playground, index) => (
+                <Marker
+                  key={index}
+                  position={{
+                    lat: parseFloat(playground.coordinates.lat),
+                    lng: parseFloat(playground.coordinates.lng),
+                  }}
+                  onClick={() => {
+                    setSelectedPG(playground);
+                  }}
+                />
+              ))}
+              {receivedPG.map((playground, index) => (
+                <Marker
+                  key={index}
+                  position={{
+                    lat: parseFloat(playground.coordinates.lat),
+                    lng: parseFloat(playground.coordinates.lng),
+                  }}
+                  onClick={() => {
+                    setSelectedPG(playground);
+                  }}
+                />
+              ))}
+              {selectedPG && (
+                <InfoWindow
+                  onCloseClick={() => {
+                    setSelectedPG(null);
+                  }}
+                  position={{
+                    lat: selectedPG.coordinates.lat,
+                    lng: selectedPG.coordinates.lng,
+                  }}
+                >
+                  <div className="card border-0" style={{ width: "18rem" }}>
+                    <img
+                      src={selectedPG.photo[0]}
+                      className="card-img-top"
+                      alt="PGPhoto"
+                    ></img>
+                    <div className="card-body">
+                      <p className="card-text d-flex justify-content-between font-weight-bold">
+                        {selectedPG.attributes.slide && (
+                          <img
+                            className="icon icon-box"
+                            src="/images/icons/slide.svg"
+                            alt="Slide"
+                          />
+                        )}
+                        {selectedPG.attributes.swing && (
+                          <img
+                            className="icon icon-box"
+                            src="/images/icons/swing.svg"
+                            alt="Swing"
+                          />
+                        )}
+                        {selectedPG.attributes.rollerBungge && (
+                          <img
+                            className="icon icon-box"
+                            src="/images/icons/zipline.svg"
+                            alt="Zipline"
+                          />
+                        )}
+                        {selectedPG.attributes.sander && (
+                          <img
+                            className="icon icon-box"
+                            src="/images/icons/sand-box.svg"
+                            alt="Sander"
+                          />
+                        )}
+                        {selectedPG.attributes.toilet && (
+                          <img
+                            className="icon icon-box"
+                            src="/images/icons/wc.svg"
+                            alt="Toilet"
+                          />
+                        )}
+                        {selectedPG.attributes.pitch && (
+                          <img
+                            className="icon icon-box"
+                            src="/images/icons/pitch.svg"
+                            alt="Pitch"
+                          />
+                        )}
+                      </p>
                     </div>
-                </div>
-            </InfoWindow>
-        )}
-      </GoogleMap>
+                    <ReactStars
+    count={5}
+    onChange={ratingChanged}
+    size={24}
+    color2={"#ffd700"}
+  />
+ 
+                  </div>
+                </InfoWindow>
+              )}
+            </GoogleMap>
+          </div>
+        </div>
+      </div>
 
-      </div>
-      </div>
-      </div>
-
-      {/* <Link to="/addPG"> Add new playground</Link>
-      <Link to="/admin"> Check new playgrounds</Link>
-      <Link to="/"> Logout</Link> */}
     </div>
   );
-  function myPosition (position){
-    setMyLocation({ lat:position.coords.latitude, lng:position.coords.longitude })
+
+
+  function myPosition(position) {
+    setMyLocation({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    });
   }
 
   function Locate({ panTo }) {
@@ -175,8 +236,7 @@ export default function MainMap() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
               });
-             myPosition(position)
-             
+              myPosition(position);
             },
             () => null
           );
@@ -185,11 +245,5 @@ export default function MainMap() {
         <img src="/images/icons/target.svg" alt="compass" />
       </button>
     );
-  
   }
 }
-
-
-
-
-
