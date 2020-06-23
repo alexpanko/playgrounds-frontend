@@ -49,11 +49,7 @@ class UserService {
     .catch(err => console.log(err))
   }
 
-  ratePG = (data, id) => {
-    return this.service.post(`/playground/ratePG/${id}`, data)
-    .then(res => res.data)
-    .catch(err => console.log(err))
-  }
+
 
  deletePG = (id) => {
    return this.service.get(`/playground/deletePG/${id}`)

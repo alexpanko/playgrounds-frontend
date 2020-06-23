@@ -94,12 +94,17 @@ console.log({PGlocation, PGcoords, newPGonMap});
         />
       )}
       <div className="adding-form">
+      
+     
         <div>
           <h1 className="text-brown text-center">
             <span className="highlight">Add a new playground</span>
           </h1>
+
+          
           <form className="from-container" onSubmit={(e) => handleSubmit(e)}>
-            <input
+          
+          <input
               type="file"
               name="photo"
               multiple
@@ -107,6 +112,12 @@ console.log({PGlocation, PGcoords, newPGonMap});
             />
 
             <ul>
+            
+            {/* <div className="hints">
+      <span className="side-text"> Please, use Google Chrome <br></br> if you would like to upload photos.<br></br>  You can choose up to 3 photos</span>
+          <span className="side-text"> Please, click on items<br></br> representing facilities on the location </span>
+          
+          </div> */}
               <li>
                 <label>
                   {" "}

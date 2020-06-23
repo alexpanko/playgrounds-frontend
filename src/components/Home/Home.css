@@ -1,3 +1,4 @@
+
 video {
   object-fit: cover;
   width: 100vw;
@@ -24,7 +25,7 @@ video {
 .highlight-skew {
   /* background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #CDDC39 50%); */
   background-color: #CDDC39;
-  transform: skew(30deg);
+  /* transform: skew(30deg); */
   opacity: 90%;
 }
 
