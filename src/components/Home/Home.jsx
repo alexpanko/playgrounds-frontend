@@ -14,13 +14,7 @@ export default function Home() {
                     <div className="col">
                         <div>
                             <h1 className="display-3 text-brown highlight">
-                                Playgrounds
-                            </h1>
-                            <h1 className="display-3 text-brown highlight">
-                                in
-                            </h1>
-                            <h1 className="display-3 text-brown highlight">
-                                Amsterdam
+                                Playgrounds in Amsterdam
                             </h1>
                         </div>
                         {/* <div>
