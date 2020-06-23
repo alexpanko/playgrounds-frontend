@@ -141,9 +141,14 @@ export default function MainMap() {
                     {/* CAROUSEL TEST: START */}
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="https://starbookbucket.s3.amazonaws.com/1592928863464" alt="slide" />
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src={selectedPG.photo[0]} alt="slide" />
                         </div>
+                        {selectedPG.photo.slice(1).map((img, index) => 
+                          <div class="carousel-item" key={index}>
+                            <img class="d-block w-100" src={img} alt="slide" />
+                          </div>                        
+                        )}
                         <div class="carousel-item">
                           <img class="d-block w-100" src="https://playgrounds-in-amsterdam.netlify.app/images/test-PG4.jpeg" alt="slide" />
                         </div>
