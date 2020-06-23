@@ -96,7 +96,7 @@ console.log({PGlocation, PGcoords, newPGonMap});
       <div className="adding-form">
         <div>
           <h1 className="text-center pb-2">
-            Add a new playground
+            Upload photos
           </h1>
           <form className="from-container" onSubmit={(e) => handleSubmit(e)}>
             <input className="py-3"
@@ -105,7 +105,9 @@ console.log({PGlocation, PGcoords, newPGonMap});
               multiple
               onChange={(e) => handleFileUpload(e)}
             />
-
+            <h1 className="text-center pb-2">
+              Select facilities
+            </h1>
             <ul>
               <li>
                 <label>

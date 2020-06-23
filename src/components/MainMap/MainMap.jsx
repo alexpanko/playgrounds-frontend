@@ -133,7 +133,7 @@ export default function MainMap() {
                     lng: selectedPG.coordinates.lng
                 }}
                 >
-                <div className="card border-0" style={{width: "18rem"}}>
+                <div className="card border-0" style={{width: "18rem !important"}}>
                     {/* ONE IMAGE: START */}
                     {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
                     {/* ONE IMAGE: END */}
