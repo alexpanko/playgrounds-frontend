@@ -142,8 +142,9 @@ export default function MainMap() {
                           <img class="d-block w-100" src={selectedPG.photo[0]} alt="Slide" />
                         </div>
                       {selectedPG.photo.map((img, index) => 
-                        console.log(`YEEEEEEEE ${img}`)
-                        
+                        <div class="carousel-item" key={index}>
+                          <img class="d-block w-100" src={img} alt="Slide" />
+                        </div>                        
                       )}
                         {/* <div class="carousel-item-active">
                           <img class="d-block w-100" src={selectedPG.photo[0]} alt="Slide" />
