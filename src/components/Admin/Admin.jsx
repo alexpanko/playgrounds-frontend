@@ -18,7 +18,7 @@ export default class Admin extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/playground/admin")
+      .get("https://playgrounds-in-amsterdam.herokuapp.com/playground/admin")
       .then((result) => {
         this.setState({ playgrounds: result.data.PG });
       })
@@ -48,7 +48,7 @@ export default class Admin extends Component {
     e.preventDefault();
     axios
       .get(
-        `http://localhost:4000/playground/admin/filter?filterApproved=${filter}`
+        `https://playgrounds-in-amsterdam.herokuapp.com/playground/admin/filter?filterApproved=${filter}`
       )
       .then((result) => {
         this.setState({ playgrounds: result.data.PG });
