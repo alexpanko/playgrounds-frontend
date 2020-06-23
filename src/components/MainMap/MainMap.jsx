@@ -141,11 +141,11 @@ export default function MainMap() {
                     {/* CAROUSEL TEST: START */}
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active my-card-img">
                           <img class="d-block my-card-img" src={selectedPG.photo[0]} alt="slide" />
                         </div>
                         {selectedPG.photo.slice(1).map((img, index) => 
-                          <div class="carousel-item" key={index}>
+                          <div class="carousel-item my-card-img" key={index}>
                             <img class="d-block my-card-img" src={img} alt="slide" />
                           </div>                        
                         )}
