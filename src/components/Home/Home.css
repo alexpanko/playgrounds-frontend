@@ -55,3 +55,10 @@ video {
   color: #F0F4C3 !important;
   border: 0px !important;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .title-mob {
+    font-size: 16rem !important;
+  }
+}
