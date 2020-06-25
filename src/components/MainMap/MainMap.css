@@ -50,6 +50,6 @@
 
 .my-card-img {
     width: 100% !important;
-    max-width: 300px;
+    max-width: 300px !important;
     /* height: auto; */
 }
