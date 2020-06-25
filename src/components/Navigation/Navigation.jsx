@@ -20,7 +20,7 @@ export default class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar bg="white" expand="lg">
+                <Navbar bg="blue" expand="lg">
                     <Navbar.Brand className="highlight" href="/">Playgrounds in Amsterdam</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
