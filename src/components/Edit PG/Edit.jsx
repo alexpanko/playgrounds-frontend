@@ -50,8 +50,8 @@ export default function Edit({ id, ...props }) {
   };
  
   return (
-    <div>
-      <img className="img-fluid" src={photo} alt="Playground"></img>
+    <div className="pt-3">
+      <img className="img-fluid" src={photo[0]} alt="Playground"></img>
       <form onSubmit={(e) => handleSubmit(e)}>
         <span>Coordinates:</span>
         <label>
