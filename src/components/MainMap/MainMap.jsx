@@ -12,7 +12,6 @@ import {
 
 import { playgrounds } from "../Playground/PG";
 import "../AddPG/AddPG.scss";
-import Navigation from "../Navigation/Navigation";
 import ReactStars from "react-rating-stars-component";
 
 
