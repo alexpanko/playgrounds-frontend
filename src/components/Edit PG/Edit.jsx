@@ -51,7 +51,7 @@ export default function Edit({ id, ...props }) {
  
   return (
     <div>
-      <img src={photo} alt="Playground"></img>
+      <img className="img-fluid" src={photo} alt="Playground"></img>
       <form onSubmit={(e) => handleSubmit(e)}>
         <span>Coordinates:</span>
         <label>
@@ -76,10 +76,10 @@ export default function Edit({ id, ...props }) {
         </label>
 
         
-        <label>
+        <label className="form-check-label">
           {" "}
           Pitch
-          <input type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
+          <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
         </label>
         <label>
           slide
