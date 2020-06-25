@@ -58,8 +58,7 @@ export default function Edit({ id, ...props }) {
       <img className="img-fluid pt-3" src={photo} alt="Playground"></img>
 
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h3>Coordinates:</h3>
-        <br />
+        <h3 className="mt-3">Coordinates:</h3>
         
         <div className="form-row">
         <div className="form-group col-md-6">
@@ -74,17 +73,19 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setLat(e.target.value)}
           />
         </label>
-        <br />
+        <div className="form-group col-md-6">
         <label>
           {" "}
           Longitude
           <input
+            className="form-control"
             type="text"
             value={lng}
             name=""
             onChange={(e) => setLng(e.target.value)}
           />
         </label>
+        </div>
         </div>
         </div>
         <br />
@@ -160,7 +161,7 @@ export default function Edit({ id, ...props }) {
 
         </div>
         </div>
-        
+
         <br />
         <button className="btn btn-warning" type="submit">
           {" "}
