@@ -89,7 +89,7 @@ export default function Edit({ id, ...props }) {
         </div>
         </div>
         
-        <br />
+        <h3 className="mt-3">Facilities:</h3>
 
         <div className="form-group">
           <div className="form-check">
