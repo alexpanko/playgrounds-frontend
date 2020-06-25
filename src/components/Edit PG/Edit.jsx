@@ -100,58 +100,67 @@ export default function Edit({ id, ...props }) {
             </label>
             
             <br />
-            <label>
-              slide
-              <input
+            <input
+                className="form-check-input"
                 type="checkbox"
                 checked={slide}
                 name=""
                 onChange={(e) => setSlide(!slide)}
               />
+            <label className="form-check-label">
+              slide
+              
             </label>
             <br />
-            <label>
-              swing
-              <input
+            <input
+                className="form-check-input"
                 type="checkbox"
                 checked={swing}
                 name=""
                 onChange={(e) => setSwing(!swing)}
               />
+            <label className="form-check-label">
+              swing
+              
             </label>
             <br />
-            <label>
-              Sander
-              <input
+            <input
+                className="form-check-input"
                 type="checkbox"
                 checked={sander}
                 name=""
                 onChange={(e) => setSander(!sander)}
               />
+            <label className="form-check-label">
+              Sander
+              
             </label>
             <br />
-            <label>
-              Toilet
-              <input
+            <input
+                className="form-check-input"
                 type="checkbox"
                 checked={toilet}
                 name=""
                 onChange={(e) => setToilet(!toilet)}
               />
+            <label className="form-check-label">
+              Toilet
+              
             </label>
             <br />
-            <label>
-              Roller Bungge
-              <input
+            <input
+                className="form-check-input"
                 type="checkbox"
                 checked={rollerBungge}
                 name=""
                 onChange={(e) => setRollerBungge(!rollerBungge)}
               />
+            <label className="form-check-label">
+              Roller Bungge
             </label>
             <br />
             <hr />
-            <label>
+            <label className="form-check-label">
               Approve
               <input
                 type="checkbox"
