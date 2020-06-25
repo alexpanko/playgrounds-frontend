@@ -96,7 +96,7 @@ export default function Edit({ id, ...props }) {
 
         <label className="form-check-label">
           {" "}
-          Pitch
+          <span className="ml-5">Pitch</span>
           <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
         </label>
         <br />
