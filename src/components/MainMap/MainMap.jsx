@@ -140,6 +140,7 @@ export default function MainMap() {
               ))}
               {selectedPG && (
                 <InfoWindow
+                style={{width: "300px !important"}}
                   onCloseClick={() => {
                     setSelectedPG(null);
                   }}
