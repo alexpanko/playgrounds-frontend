@@ -55,7 +55,7 @@ export default function Edit({ id, ...props }) {
         <div className="col">
 
         <div className="pt-3">
-      <img className="img-fluid pt-3" src={photo[0]} alt="Playground"></img>
+      <img className="img-fluid pt-3" src={photo} alt="Playground"></img>
       <form onSubmit={(e) => handleSubmit(e)}>
         <span>Coordinates:</span>
         <br />
