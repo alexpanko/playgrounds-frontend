@@ -87,10 +87,11 @@ export default function Edit({ id, ...props }) {
         </label>
         </div>
         </div>
-        
-        
-
         <br />
+
+        <div className="form-group">
+          <div className="form-check">
+
         <label className="form-check-label">
           {" "}
           Pitch
@@ -156,6 +157,10 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setApproved(!approved)}
           />
         </label>
+
+        </div>
+        </div>
+        
         <br />
         <button className="btn btn-warning" type="submit">
           {" "}
