@@ -160,14 +160,16 @@ export default function Edit({ id, ...props }) {
             </label>
             <br />
             <hr />
-            <label className="form-check-label">
-              Approve
-              <input
+            <input
+            className="form-check-input"
                 type="checkbox"
                 checked={approved}
                 name=""
                 onChange={(e) => setApproved(!approved)}
               />
+            <label className="form-check-label">
+              Approve
+              
             </label>
 
           </div>
