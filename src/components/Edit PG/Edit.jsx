@@ -50,10 +50,15 @@ export default function Edit({ id, ...props }) {
   };
  
   return (
-    <div className="pt-3">
-      <img className="img-fluid" src={photo[0]} alt="Playground"></img>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+
+        <div className="pt-3">
+      <img className="img-fluid pt-3" src={photo[0]} alt="Playground"></img>
       <form onSubmit={(e) => handleSubmit(e)}>
         <span>Coordinates:</span>
+        <br />
         <label>
           {" "}
           Lattitude
@@ -64,6 +69,7 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setLat(e.target.value)}
           />
         </label>
+        <br />
         <label>
           {" "}
           Longitude
@@ -75,12 +81,13 @@ export default function Edit({ id, ...props }) {
           />
         </label>
 
-        
+        <br />
         <label className="form-check-label">
           {" "}
           Pitch
           <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
         </label>
+        <br />
         <label>
           slide
           <input
@@ -90,7 +97,7 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setSlide(!slide)}
           />
         </label>
-
+        <br />
         <label>
           swing
           <input
@@ -100,7 +107,7 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setSwing(!swing)}
           />
         </label>
-
+        <br />
         <label>
           Sander
           <input
@@ -110,7 +117,7 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setSander(!sander)}
           />
         </label>
-
+        <br />
         <label>
           Toilet
           <input
@@ -120,7 +127,7 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setToilet(!toilet)}
           />
         </label>
-
+        <br />
         <label>
           Roller Bungge
           <input
@@ -130,6 +137,7 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setRollerBungge(!rollerBungge)}
           />
         </label>
+        <br />
         <label>
           Approve
           <input
@@ -139,11 +147,18 @@ export default function Edit({ id, ...props }) {
             onChange={(e) => setApproved(!approved)}
           />
         </label>
+        <br />
         <button className="btn btn-warning" type="submit">
           {" "}
           Submit changes{" "}
         </button>
       </form>
     </div>
+
+        </div>
+      </div>
+    </div>
+
+
   );
 }
