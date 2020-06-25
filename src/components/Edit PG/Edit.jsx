@@ -94,11 +94,12 @@ export default function Edit({ id, ...props }) {
         <div className="form-group">
           <div className="form-check">
 
-            <label>
+            <label className="form-check-label">
               {" "}
-              <span className="ml-5">Pitch</span>
-              <input className="form-check-input px-1" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
+              Pitch
+              
             </label>
+            <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
             <br />
             <label>
               slide
@@ -151,6 +152,7 @@ export default function Edit({ id, ...props }) {
             </label>
             <br />
             <hr />
+            <br />
             <label>
               Approve
               <input
