@@ -9,14 +9,16 @@ import {
   InfoWindow,
   
 } from "@react-google-maps/api";
+
 import { playgrounds } from "../Playground/PG";
 import "../AddPG/AddPG.scss";
 import Navigation from "../Navigation/Navigation";
 import ReactStars from "react-rating-stars-component";
 
+
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "90vh",
+  height: "93vh",
   width: "100vw",
 };
 const options = {
@@ -72,8 +74,8 @@ export default function MainMap() {
   console.log({ receivedPG });
   return (
     <div>
-      <div className="height-10 container">
-        <Navigation />
+      <div className="height-10 container pb-3">
+        {/* <Navigation /> */}
       </div>
 
       <div className="container-flex">
@@ -147,57 +149,50 @@ export default function MainMap() {
                     lng: selectedPG.coordinates.lng,
                   }}
                 >
-                  <div className="card border-0" style={{ width: "18rem" }}>
-                    <img
-                      src={selectedPG.photo[0]}
-                      className="card-img-top"
-                      alt="PGPhoto"
-                    ></img>
-                    <div className="card-body">
-                      <p className="card-text d-flex justify-content-between font-weight-bold">
-                        {selectedPG.attributes.slide && (
-                          <img
-                            className="icon icon-box"
-                            src="/images/icons/slide.svg"
-                            alt="Slide"
-                          />
+
+                <div className="card border-0" style={{width: "300px !important"}}>
+                    {/* ONE IMAGE: START */}
+                    {/* <img src= {selectedPG.photo[0]} className="card-img-top my-card-img" alt="PGPhoto"></img> */}
+                    {/* ONE IMAGE: END */}
+
+                    {/* CAROUSEL TEST: START */}
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img class="d-block my-card-img" src={selectedPG.photo[0]} alt="slide" />
+                        </div>
+                        {selectedPG.photo.slice(1).map((img, index) => 
+                          <div class="carousel-item" key={index}>
+                            <img class="d-block my-card-img" src={img} alt="slide" />
+                          </div>                        
                         )}
-                        {selectedPG.attributes.swing && (
-                          <img
-                            className="icon icon-box"
-                            src="/images/icons/swing.svg"
-                            alt="Swing"
-                          />
-                        )}
-                        {selectedPG.attributes.rollerBungge && (
-                          <img
-                            className="icon icon-box"
-                            src="/images/icons/zipline.svg"
-                            alt="Zipline"
-                          />
-                        )}
-                        {selectedPG.attributes.sander && (
-                          <img
-                            className="icon icon-box"
-                            src="/images/icons/sand-box.svg"
-                            alt="Sander"
-                          />
-                        )}
-                        {selectedPG.attributes.toilet && (
-                          <img
-                            className="icon icon-box"
-                            src="/images/icons/wc.svg"
-                            alt="Toilet"
-                          />
-                        )}
-                        {selectedPG.attributes.pitch && (
-                          <img
-                            className="icon icon-box"
-                            src="/images/icons/pitch.svg"
-                            alt="Pitch"
-                          />
-                        )}
-                      </p>
+                        
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    {/* CAROUSEL TEST: END */}
+
+
+                    
+
+                    <div class="card-body">
+                        
+            <p className="card-text d-flex justify-content-around flex-wrap font-weight-bold">
+                            {selectedPG.attributes.slide && <img className="icon icon-box" src="/images/icons/slide.svg" alt="Slide"/>}
+                            {selectedPG.attributes.swing && <img className="icon icon-box" src="/images/icons/swing.svg" alt="Swing"/>}
+                            {selectedPG.attributes.rollerBungge && <img className="icon icon-box" src="/images/icons/zipline.svg" alt="Zipline"/>}
+                            {selectedPG.attributes.sander && <img className="icon icon-box" src="/images/icons/sand-box.svg" alt="Sander"/>}
+                            {selectedPG.attributes.toilet && <img className="icon icon-box" src="/images/icons/wc.svg" alt="Toilet"/>}
+                            {selectedPG.attributes.pitch && <img className="icon icon-box" src="/images/icons/pitch.svg" alt="Pitch"/>}
+                        </p>
+
                     </div>
                     <ReactStars
     count={5}

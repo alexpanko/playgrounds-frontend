@@ -20,20 +20,21 @@ export default class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar bg="white" expand="lg">
+                <Navbar bg="blue" expand="lg">
                     <Navbar.Brand className="highlight" href="/">Playgrounds in Amsterdam</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="text-right">
+                        <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/signup">Signup</Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
-                            <Nav.Link href="/main-map">Find playground</Nav.Link>
-                            <Nav.Link href="/addPG">Add playground</Nav.Link>
-                            <Nav.Link href="/">
+                            {!this.props.user && <Nav.Link href="/signup">Signup</Nav.Link>}
+                            {!this.props.user && <Nav.Link href="/login">Login</Nav.Link>}
+                            {this.props.user && <Nav.Link href="/main-map">City map</Nav.Link>}
+                            {this.props.user && <Nav.Link href="/addPG">Add playground</Nav.Link>}
+                            {this.props.user && <Nav.Link href="/">
                                 <button className="navLink" onClick={() => this.logoutUser()}>Logout</button>
-                            </Nav.Link>
-                            <Nav.Link href="/admin">Admin</Nav.Link>
+                            </Nav.Link>}
+                            {this.props.user && this.props.user.role === "ADMIN" && <Nav.Link href="/admin">Admin</Nav.Link>}
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

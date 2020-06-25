@@ -54,104 +54,147 @@ export default function Edit({ id, ...props }) {
   };
  
   return (
-    <div >
-     {photo?.map((photo, index) =>
+
+    <div className="container">
+      <div className="row">
+        <div className="col">
+
+
+        <div className="py-3">
+       {photo?.map((photo, index) =>
       <img className="edit-page" key={index}  src={photo} alt="Playground"></img>
       )}
-      
-      
-      <form className="edit-form" onSubmit={(e) => handleSubmit(e)}>
-        <span>Coordinates:</span>
-        <label>
-          {" "}
-          Lattitude
-          <input
-            type="text"
-            value={lat}
-            name=""
-            onChange={(e) => setLat(e.target.value)}
-          />
-        </label>
-        <label>
-          {" "}
-          Longitude
-          <input
-            type="text"
-            value={lng}
-            name=""
-            onChange={(e) => setLng(e.target.value)}
-          />
-        </label>
 
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <h3 className="mt-3">Coordinates:</h3>
         
-        <label>
-          {" "}
-          Pitch
-          <input type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
-        </label>
-        <label>
-          slide
-          <input
-            type="checkbox"
-            checked={slide}
-            name=""
-            onChange={(e) => setSlide(!slide)}
-          />
-        </label>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+            <label>
+              {" "}
+              Lattitude
+              <input
+                className="form-control"
+                type="text"
+                value={lat}
+                name=""
+                onChange={(e) => setLat(e.target.value)}
+              />
+            </label>
+            </div>
+          <div className="form-group col-md-6">
+            <label>
+              {" "}
+              Longitude
+              <input
+                className="form-control"
+                type="text"
+                value={lng}
+                name=""
+                onChange={(e) => setLng(e.target.value)}
+              />
+            </label>
+        </div>
+        </div>
+        
+        <h3 className="mt-3">Facilities:</h3>
 
-        <label>
-          swing
-          <input
-            type="checkbox"
-            checked={swing}
-            name=""
-            onChange={(e) => setSwing(!swing)}
-          />
-        </label>
+        <div className="form-group">
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
+            <label className="form-check-label">
+              {" "}
+              Pitch  
+            </label>
+            
+            <br />
+            <input
+                className="form-check-input"
+                type="checkbox"
+                checked={slide}
+                name=""
+                onChange={(e) => setSlide(!slide)}
+              />
+            <label className="form-check-label">
+              slide
+              
+            </label>
+            <br />
+            <input
+                className="form-check-input"
+                type="checkbox"
+                checked={swing}
+                name=""
+                onChange={(e) => setSwing(!swing)}
+              />
+            <label className="form-check-label">
+              swing
+              
+            </label>
+            <br />
+            <input
+                className="form-check-input"
+                type="checkbox"
+                checked={sander}
+                name=""
+                onChange={(e) => setSander(!sander)}
+              />
+            <label className="form-check-label">
+              Sander
+              
+            </label>
+            <br />
+            <input
+                className="form-check-input"
+                type="checkbox"
+                checked={toilet}
+                name=""
+                onChange={(e) => setToilet(!toilet)}
+              />
+            <label className="form-check-label">
+              Toilet
+              
+            </label>
+            <br />
+            <input
+                className="form-check-input"
+                type="checkbox"
+                checked={rollerBungge}
+                name=""
+                onChange={(e) => setRollerBungge(!rollerBungge)}
+              />
+            <label className="form-check-label">
+              Roller Bungge
+            </label>
+            <br />
+            <hr />
+            <input
+            className="form-check-input"
+                type="checkbox"
+                checked={approved}
+                name=""
+                onChange={(e) => setApproved(!approved)}
+              />
+            <label className="form-check-label">
+              Approve
+              
+            </label>
 
-        <label>
-          Sander
-          <input
-            type="checkbox"
-            checked={sander}
-            name=""
-            onChange={(e) => setSander(!sander)}
-          />
-        </label>
+          </div>
+        </div>
 
-        <label>
-          Toilet
-          <input
-            type="checkbox"
-            checked={toilet}
-            name=""
-            onChange={(e) => setToilet(!toilet)}
-          />
-        </label>
-
-        <label>
-          Roller Bungge
-          <input
-            type="checkbox"
-            checked={rollerBungge}
-            name=""
-            onChange={(e) => setRollerBungge(!rollerBungge)}
-          />
-        </label>
-        <label>
-          Approve
-          <input
-            type="checkbox"
-            checked={approved}
-            name=""
-            onChange={(e) => setApproved(!approved)}
-          />
-        </label>
+        <br />
         <button className="btn btn-warning" type="submit">
           {" "}
           Submit changes{" "}
         </button>
       </form>
     </div>
+
+        </div>
+      </div>
+    </div>
+
+
   );
 }

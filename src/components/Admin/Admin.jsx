@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
 import "./Admin.css";
 import UserService from "../../services/user-service";
+// import Navigation from '../Navigation/Navigation';
 
 
 export default class Admin extends Component {
@@ -15,12 +16,16 @@ export default class Admin extends Component {
   userService = new UserService()
 
   componentDidMount() {
+
     this.userService.admin()
     .then((data) => {
       
       this.setState({ playgrounds: data.PG });
     })
+
   }
+ 
+
  
 
   logoutUser = () => {
@@ -31,12 +36,15 @@ export default class Admin extends Component {
 
   filterPlaygrounds(e, filter) {
     e.preventDefault();
+
     this.userService.filterPG(filter)
+
       .then((result) => {
         this.setState({ playgrounds: result.PG });
       })
       .catch((error) => console.log(error));
   }
+
 
   handleDelete = (e, id) => {
     e.preventDefault()
@@ -51,26 +59,25 @@ export default class Admin extends Component {
     })
     .catch((error) => console.log(error));
 }
-  
 
   render() {
     //console.log(this.state.playgrounds);
-    // if (this.props.user && this.props.user.role === "ADMIN") {
-    if (this.props.user) {
+    if (this.props.user && this.props.user.role === "ADMIN") {
+    // if (this.props.user) {
       return (
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <div className="col">
               <h1 className="text-brown text-center">
                 <span className="highlight">Playgrounds in Amsterdam</span>
               </h1>
             </div>
-          </div>
+          </div> */}
           <div className="row mt-5">
             <div className="col-lg-2"></div>
             <div className="col-lg-8">
               <h1 className="text-center">Admin page</h1>
-              <p className="text-center">
+              {/* <p className="text-center">
                 <Link to="/">
                   <button
                     className="btn btn-link"
@@ -79,7 +86,7 @@ export default class Admin extends Component {
                     Logout
                   </button>
                 </Link>
-              </p>
+              </p> */}
               <div className="text-center">
                 <div className="dropdown">
                   <button
@@ -143,7 +150,7 @@ export default class Admin extends Component {
                           />
                           <div className="card-body">
                             <h5 className="card-title">{pg.address}</h5>
-                            <p className="card-text d-flex justify-content-between font-weight-bold">
+                            <p className="card-text d-flex justify-content-around flex-wrap font-weight-bold">
                               {pg.attributes.slide && <strong>Slide</strong>}
                               {pg.attributes.swing && <strong>Swing</strong>}
                               {pg.attributes.rollerBungge && (
@@ -156,7 +163,7 @@ export default class Admin extends Component {
                         
                           </div>
                         </Link>
-                        <button onClick={(e) => this.handleDelete(e, pg._id)} className="btn btn-warning" type="submit">Delete</button>
+                        <button onClick={(e) => this.handleDelete(e, pg._id)} className="btn btn-danger m-3" type="submit">Delete</button>
                       </div>
                     ))}
               </div>

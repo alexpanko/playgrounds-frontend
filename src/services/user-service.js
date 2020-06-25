@@ -7,16 +7,22 @@ import { toast } from 'react-toastify';
 class UserService {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:4000',
-      //process.env.REACT_APP_BASE_URL
+
+      // baseURL: 'http://localhost:4000/',
+      baseURL: process.env.REACT_APP_BASE_URL,
+
       withCredentials: true
     })
-    //this.service = service
+    
   }
 
-//  , { onUploadProgress:ProgressEvent => {
-//     setLoaded(ProgressEvent.loaded / ProgressEvent.total*100)}
-//      }
+
+
+ admin = (data) => {
+   return this.service.get('/playground/admin', data)
+   .then(res => console.log(res.data))
+   .catch(err => console.log(err))
+ }
 
  addPG = (data) => {
     return this.service.post('/playground/addPG',  data)
@@ -31,13 +37,15 @@ class UserService {
     
   }
 
+
   admin = () => {
     return this.service.get('/playground/admin')
     .then(res => res.data)
     .catch(err => console.log(err))
   }
 
-  filterPG = (filter) =>{
+  filterPG = (filter) => {
+
     return this.service.get(`/playground/admin/filter?filterApproved=${filter}`)
     .then(res => res.data)
     .catch(err => console.log(err))

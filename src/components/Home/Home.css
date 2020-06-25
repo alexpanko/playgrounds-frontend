@@ -19,14 +19,21 @@ video {
 
 .highlight {
   background: linear-gradient(180deg,rgba(255,255,255,0) 40%, #CDDC39 40%);
-  opacity: 90%;
+  /* opacity: 90% !important; */
+}
+
+.highlight-title {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 40%, #CDDC39 40%);
+  /* opacity: 90% !important; */
 }
 
 .highlight-skew {
   /* background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #CDDC39 50%); */
   background-color: #CDDC39;
-  /* transform: skew(30deg); */
-  opacity: 90%;
+
+  transform: skew(30deg);
+  /* opacity: 90% !important; */
+
 }
 
 .skew-30 {
@@ -55,4 +62,14 @@ video {
   background-color: #757575 !important;
   color: #F0F4C3 !important;
   border: 0px !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .title-mob {
+    font-size: 3rem !important;
+  }
+  .highlight-title {
+    background: linear-gradient(180deg,rgba(255,255,255,0) -20%, #CDDC39 40%);
+  }
 }
