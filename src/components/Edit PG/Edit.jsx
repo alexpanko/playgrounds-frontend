@@ -94,73 +94,74 @@ export default function Edit({ id, ...props }) {
         <div className="form-group">
           <div className="form-check">
 
-        <label className="form-check-label">
-          {" "}
-          <span className="ml-5">Pitch</span>
-          <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
-        </label>
-        <br />
-        <label>
-          slide
-          <input
-            type="checkbox"
-            checked={slide}
-            name=""
-            onChange={(e) => setSlide(!slide)}
-          />
-        </label>
-        <br />
-        <label>
-          swing
-          <input
-            type="checkbox"
-            checked={swing}
-            name=""
-            onChange={(e) => setSwing(!swing)}
-          />
-        </label>
-        <br />
-        <label>
-          Sander
-          <input
-            type="checkbox"
-            checked={sander}
-            name=""
-            onChange={(e) => setSander(!sander)}
-          />
-        </label>
-        <br />
-        <label>
-          Toilet
-          <input
-            type="checkbox"
-            checked={toilet}
-            name=""
-            onChange={(e) => setToilet(!toilet)}
-          />
-        </label>
-        <br />
-        <label>
-          Roller Bungge
-          <input
-            type="checkbox"
-            checked={rollerBungge}
-            name=""
-            onChange={(e) => setRollerBungge(!rollerBungge)}
-          />
-        </label>
-        <br />
-        <label>
-          Approve
-          <input
-            type="checkbox"
-            checked={approved}
-            name=""
-            onChange={(e) => setApproved(!approved)}
-          />
-        </label>
+            <label>
+              {" "}
+              <span className="ml-5">Pitch</span>
+              <input className="form-check-input px-1" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
+            </label>
+            <br />
+            <label>
+              slide
+              <input
+                type="checkbox"
+                checked={slide}
+                name=""
+                onChange={(e) => setSlide(!slide)}
+              />
+            </label>
+            <br />
+            <label>
+              swing
+              <input
+                type="checkbox"
+                checked={swing}
+                name=""
+                onChange={(e) => setSwing(!swing)}
+              />
+            </label>
+            <br />
+            <label>
+              Sander
+              <input
+                type="checkbox"
+                checked={sander}
+                name=""
+                onChange={(e) => setSander(!sander)}
+              />
+            </label>
+            <br />
+            <label>
+              Toilet
+              <input
+                type="checkbox"
+                checked={toilet}
+                name=""
+                onChange={(e) => setToilet(!toilet)}
+              />
+            </label>
+            <br />
+            <label>
+              Roller Bungge
+              <input
+                type="checkbox"
+                checked={rollerBungge}
+                name=""
+                onChange={(e) => setRollerBungge(!rollerBungge)}
+              />
+            </label>
+            <br />
+            <hr />
+            <label>
+              Approve
+              <input
+                type="checkbox"
+                checked={approved}
+                name=""
+                onChange={(e) => setApproved(!approved)}
+              />
+            </label>
 
-        </div>
+          </div>
         </div>
 
         <br />
