@@ -14,15 +14,6 @@ export default class Admin extends Component {
   service = new AuthService();
   userService = new UserService()
 
-  // componentDidMount() {
-  //   axios
-  //     .get("http://localhost:4000/playground/admin")
-  //     .then((result) => {
-  //       this.setState({ playgrounds: result.data.PG });
-  //     })
-  //     .catch((error) => console.log(error));
-  // }
-
   componentDidMount() {
     this.userService.admin()
     .then((data) => {

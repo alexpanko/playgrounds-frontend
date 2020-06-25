@@ -7,7 +7,7 @@ import {
   useLoadScript,
   Marker,
   InfoWindow,
-  DirectionsRenderer,
+  
 } from "@react-google-maps/api";
 import { playgrounds } from "../Playground/PG";
 import "../AddPG/AddPG.scss";
