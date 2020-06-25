@@ -61,33 +61,34 @@ export default function Edit({ id, ...props }) {
         <h3 className="mt-3">Coordinates:</h3>
         
         <div className="form-row">
-        <div className="form-group col-md-6">
-        <label>
-          {" "}
-          Lattitude
-          <input
-            className="form-control"
-            type="text"
-            value={lat}
-            name=""
-            onChange={(e) => setLat(e.target.value)}
-          />
-        </label>
-        <div className="form-group col-md-6">
-        <label>
-          {" "}
-          Longitude
-          <input
-            className="form-control"
-            type="text"
-            value={lng}
-            name=""
-            onChange={(e) => setLng(e.target.value)}
-          />
-        </label>
+          <div className="form-group col-md-6">
+            <label>
+              {" "}
+              Lattitude
+              <input
+                className="form-control"
+                type="text"
+                value={lat}
+                name=""
+                onChange={(e) => setLat(e.target.value)}
+              />
+            </label>
+            </div>
+          <div className="form-group col-md-6">
+            <label>
+              {" "}
+              Longitude
+              <input
+                className="form-control"
+                type="text"
+                value={lng}
+                name=""
+                onChange={(e) => setLng(e.target.value)}
+              />
+            </label>
         </div>
         </div>
-        </div>
+        
         <br />
 
         <div className="form-group">
