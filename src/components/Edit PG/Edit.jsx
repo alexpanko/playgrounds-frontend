@@ -18,6 +18,11 @@ export default function Edit({ id, ...props }) {
 
   useEffect(() => {
     service.getEditPG(id).then((data) => {
+      // photo &&
+      // Array.from(photo).forEach((element) => {
+      //   setPhoto(element.data.photo)
+      // });
+      console.log(data.photo)
       setPhoto(data.photo)
       
       setLat(data.coordinates.lat);
@@ -38,7 +43,6 @@ export default function Edit({ id, ...props }) {
    await service.editPG(
       {
         coordinates: { lat, lng },
-         
         attributes: { swing, slide, rollerBungge, sander, toilet, pitch },
         approved
       },
@@ -50,12 +54,16 @@ export default function Edit({ id, ...props }) {
   };
  
   return (
+
     <div className="container">
       <div className="row">
         <div className="col">
 
+
         <div className="py-3">
-      <img className="img-fluid pt-3" src={photo} alt="Playground"></img>
+       {photo?.map((photo, index) =>
+      <img className="edit-page" key={index}  src={photo} alt="Playground"></img>
+      )}
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <h3 className="mt-3">Coordinates:</h3>

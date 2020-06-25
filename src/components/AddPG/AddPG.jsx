@@ -94,12 +94,16 @@ console.log({PGlocation, PGcoords, newPGonMap});
         />
       )}
       <div className="adding-form">
+      
+     
         <div>
+
           <h3 className="text-center pb-2">
             Upload photos
           </h3>
           <form className="from-container" onSubmit={(e) => handleSubmit(e)}>
             <input className="py-3"
+
               type="file"
               name="photo"
               multiple
@@ -109,6 +113,12 @@ console.log({PGlocation, PGcoords, newPGonMap});
               Select facilities
             </h3>
             <ul>
+            
+            {/* <div className="hints">
+      <span className="side-text"> Please, use Google Chrome <br></br> if you would like to upload photos.<br></br>  You can choose up to 3 photos</span>
+          <span className="side-text"> Please, click on items<br></br> representing facilities on the location </span>
+          
+          </div> */}
               <li>
                 <label>
                   {" "}

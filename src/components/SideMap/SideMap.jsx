@@ -70,6 +70,7 @@ export default function SideMap(props) {
 
   return (
     <div>
+    
       {showModal && (
         <Modal
           title="Confirm your choice, please"
@@ -105,6 +106,7 @@ export default function SideMap(props) {
           />
         )}
       </GoogleMap>
+      <span className="side-map-text">Please click on the map to add location</span>
     </div>
   );
 }
