@@ -54,7 +54,7 @@ export default function Edit({ id, ...props }) {
       <div className="row">
         <div className="col">
 
-        <div className="pt-3">
+        <div className="py-3">
       <img className="img-fluid pt-3" src={photo} alt="Playground"></img>
 
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -93,13 +93,12 @@ export default function Edit({ id, ...props }) {
 
         <div className="form-group">
           <div className="form-check">
-
+            <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
             <label className="form-check-label">
               {" "}
-              Pitch
-              
+              Pitch  
             </label>
-            <input className="form-check-input" type="checkbox" name="" onChange={(e) => setPitch(!pitch)} />
+            
             <br />
             <label>
               slide
@@ -152,7 +151,6 @@ export default function Edit({ id, ...props }) {
             </label>
             <br />
             <hr />
-            <br />
             <label>
               Approve
               <input
