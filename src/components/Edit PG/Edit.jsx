@@ -62,7 +62,7 @@ export default function Edit({ id, ...props }) {
 
         <div className="py-3">
        {photo?.map((photo, index) =>
-      <img className="edit-page" key={index}  src={photo} alt="Playground"></img>
+      <img className="w-200 mx-1" key={index}  src={photo} alt="Playground"></img>
       )}
 
       <form onSubmit={(e) => handleSubmit(e)}>
