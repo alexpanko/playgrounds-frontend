@@ -194,12 +194,16 @@ export default function MainMap() {
                         </p>
 
                     </div>
+                    <div>
                     <ReactStars
     count={5}
     onChange={ratingChanged}
     size={24}
     color2={"#ffd700"}
   />
+  <button className="btn btn-warning" type="submit"> Report a problem </button>
+                    </div>
+                    
  
                   </div>
                 </InfoWindow>
